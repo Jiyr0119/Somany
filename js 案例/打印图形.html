@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+//第一个
+	for(var row=1;row<=4;row++){
+		document.write("****"+'<br>');
+	}
+//第二个
+	for(var row=1;row<=4;row++){
+		for(var col=1;col<=row;col++){
+			document.write("*");
+		}
+		document.write("<br>");
+	}
+//第三个
+	for(var row=1;row<=5;row++){
+		for(var col=1;col<=row-1;col++){
+			document.write("&nbsp");
+		}
+		for(var col=1;col<=6-row;col++){
+			document.write("*");
+		}
+		document.write("<br>");
+	}
+//第四个
+	for(var row=1;row<=4;row++){
+		for(var col=1;col<=4-row;col++){
+			document.write("&nbsp");
+		}
+		for(var col=1;col<=2*row+1;col++){
+			document.write("*");
+		}
+		document.write("<br>");
+	}
+//第五个
+	for(var row=1;row<=4;row++){
+		for(var col=1;col<=4-row;col++){
+			document.write("&nbsp");
+		}
+		for(var col=1;col<=2*row-1;col++){
+			document.write("*");
+		}
+		document.write("<br>");
+	}
+	for(var row=1;row<=3;row++){
+		for(var col=1;col<=row;col++){
+			document.write("&nbsp");
+		}
+		for(var col=1;col<=7-2*row;col++){
+			document.write("*");
+		}
+		document.write("<br>");
+	}
+
+
+</script>

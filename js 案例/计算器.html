@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt1"/>
+		<select name="" id="sel">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text" id="txt2"/>
+		<input type="button" value="=" id="btn"/>
+		<input type="text" id="txt3"/>
+	</body>
+</html>
+<script>
+	var result=0;
+	var oSel=document.getElementById("sel")
+	var oTxt1=document.getElementById("txt1")
+	var oTxt2=document.getElementById("txt2")
+	var oTxt3=document.getElementById("txt3")
+	var oBtn=document.getElementById("btn")
+	oBtn.onclick=function(){
+		var flag=oSel.value;
+		var num1=parseInt(oTxt1.value);
+		var num2=parseInt(oTxt2.value);
+		switch(flag){
+			case "+":result=num1+num2;break;
+			case "-":result=num1-num2;break;
+			case "*":result=num1*num2;break;
+			case "/":result=num1/num2;break;
+		}
+		oTxt3.value=result;
+	}
+</script>

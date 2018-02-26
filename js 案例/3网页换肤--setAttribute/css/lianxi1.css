@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0;padding:0;}
+img{border:none;}
+ul,li{list-style:none;}
+a{text-decoration:none;}
+body{font-size:12px;font-weight:normal;font-family:"微软雅黑","宋体";}
+
+
+/*top*/
+.top{width:1000px;height:100px;background:#height:66px;;margin:0 auto;}
+	.top .logo{width:244px;height:58px;float:left;padding:42px 0 0 21px;}
+	
+	.top .search{width:247px;height:61px;float:right;padding-top:39px;}
+	.searchcon{width:227px;height:25px;background:#f1f1f1;border:1px solid #ebebeb;}
+		.searchcon .txt{width:188px;height:25px;background:none;border:none;font-size:12px;float:left;color:#989898;padding-left:14px;line-height:25px;}
+		.searchcon .btn{width:23px;height:25px;background: url(../images/wolong/search1.jpg) no-repeat center;border:none;float:left;}
+/*nav*/
+.nav{width:1000px;height:59px;background:url(../images/wolong/nvbj.jpg);margin:0 auto;font-size:14px;color:#fff;}
+	.nav li{float:left;width:98px;height:59px;text-align:center;line-height:59px;border-right:1px solid #494949;padding-left:21px;}
+	.nav li a{color:#fff;}
+	.nav li a:hover{color:#F30;}
+	.nav .lilast{border-right:none;}
+/*banner*/
+.banner{width:1000px;height:462px;margin:0 auto;}
+/*content*/
+.content{width:1000px;height:241px;margin:0 auto;}	
+.bt{height:35px;padding-top:30px;font-size:18px;font-weight:normal;}
+	/*新闻资讯*/
+	.con1left{width:452px;height:233px;background:#fff;float:left;padding:7px 27px 0 21px;}
+		.con1left .leftlist{height:164px;padding-top:5px;}
+		.leftlist li{height:24px;line-height:24px;background:url(../images/wolong/dian1.jpg) no-repeat left center;padding-left:12px;}
+		.leftlist li a{color:#565656;float:left;}
+		.leftlist li a:hover{color:#F33;}
+		.leftlist span{float:right;color:#929292;}
+	
+	/*卧龙介绍*/
+	.con1center{width:240px;height:240px;;background:#f1f1f1;float:left;}
+		.con1center .bt{padding-left:25px;}
+		.con1center .centerp1{padding:28px 40px 15px 25px;font-weight:bold;color:#545454;}
+		.con1center .centerp2{padding-left:25px;padding-right:23px;bold;color:#939393;}
+	/*人才招聘*/	
+	.con1right{width:260px;height:240px;background:#fbfbfb;float:left;}
+		
+		.con1right .bt{padding-left:24px;}
+		.con1right .rightp1{padding-left:24px;padding-right:55px;padding-top:14px;color:#5b5b5b;}
+		.con1right .images a img{padding:50px 61px 49px 24px;}/*上右下左*/
+		.con1right .images{background:url(../images/wolong/hua1.jpg) no-repeat right bottom;padding-right:14px;}
+	/*卧龙市场*/
+	.market{width:1000px;height:306px;background:#fff;margin:0 auto;}
+		.marketbt{width:1000px;height:65px;padding-left:23px;color:#333;font-weight:normal;}
+		.marketlist1,.marketlist2,.marketlist3,.marketlist4{width:210px;height:241px;float:left;}
+		.marketlist1{padding-right:40px;padding-left:20px; }
+		.marketlist2{padding-right:40px;}
+		.marketlist3{padding-right:40px;}
+		.marketlist4{padding-right:20px;}
+		.market dt{padding-bottom:12px;}
+	/*link*/
+	
+	.link{width:1000px;height:250px;background:#e5e5e5;margin:0 auto;color:#767676;}
+	.linkbt h3{font-size:16px;height:32px;padding:22px 0 0 38px;padding-left:12px;font-weight:normal;color:#5e5e5e;}
+	/*产品中心*/
+		.link .box1{width:450px;height:250px;float:left;padding-left:20px;padding-right:50px;}
+		.link .linkli1,.linkli2,.linkli3{float:left;padding-left:10px;}
+			
+			.linkli1 li{background:url(../images/wolong/linkj.jpg) no-repeat left center;padding-left:10px;padding-right:78px;}
+			.linkli2 li{background:url(../images/wolong/linkj.jpg) no-repeat left center;padding-left:10px;padding-right:69px;}
+			.linkli3 li{background:url(../images/wolong/linkj.jpg) no-repeat left center;padding-left:10px;}
+	/*技术研发*/
+		.link .box2{width:153px;height:250px;float:left;padding-right:50px;}
+			.tecli{padding-left:10px;}
+			.tecli li{background:url(../images/wolong/linkj.jpg) no-repeat left center;padding-left:10px;}
+	/*营销网络*/
+		.link .box3{width:257px;height:250px;float:left;}
+			.box3 img{10px 0 0 35px;}
+/*bottom*/
+	.bottom{width:1000px;height:66px;background:#FFF;margin:0 auto;}
+	
+		.bottom .bnav{width:254px;height:40px;padding-left:20px;float:left;padding-top:26px;}
+			.bnav p a:link{color:#828282;}
+			.bnav p a:hover{color:#99FF00;}
+			
+		.bottom .share{width:600px;height:44px;padding-right:20px;float:right;padding-top:22px;}
+		.bottom .share p span{padding-top:29px;}
+		.bottom .share p span a:hover{background:#9FF;filter:alpha(opacity=10);opcity:0.1;}
+			.bottom .share p{color:#838383;}
+		
+
+		
+	
+		
+		
+		
+	
+

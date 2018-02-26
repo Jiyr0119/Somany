@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0} 
+body{font-size:12px;font-weight:normal;font-family: "宋体","Arial Narrow",HELVETICA;background:#fff;}
+a{text-decoration:none;} 
+ 
+em{font-style:normal}
+ul,li{list-style:none}
+img{border:0;} 
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+
+
+/*******top*********/
+.top{width:1000px;height:70px;margin:0 auto;padding-top:30px;}
+.top .logo{width:260px;height:70px;padding-left:20px;float:left;}
+
+.top .search{width:266px;height:70px;float:right;}
+.top .search .searchcon{width:225px;height:26px;border:1px solid #e5e5e5;background:#f1f1f1;}
+.search .searchcon .txt{width:196px;height:26px;border:none;background:none;float:left;}
+.search .searchcon .btn{width:26px;height:26px;border:none;background: url(../images/wolong/search.jpg) no-repeat left center;float:left;}
+
+/****nav*********/
+.nav{width:974px;height:59px;background:url(../images/wolong/nvbj.jpg) repeat-x left center;padding-left:26px;margin:0 auto;}
+.nav ul li{float:left;}
+.nav ul li a{float:left;display:block;color:#fff;width:119px;border-right:1px solid #4a4a4a;height:59px;line-height:59px;text-align:center;}
+.nav ul li .lastb{border-right:0;}
+
+/****banner*********/
+.banner{width:1000px;height:463px;margin:0 auto;}
+
+/****content****/
+/**content1**/
+.content1{background:gray;width:1000px;height:241px;margin:0 auto;}
+.content1 .news{width:490px;height:241px;background:#fff;float:left;padding-left:10px;}
+.content1 .intro{width:215px;height:241px;border-right:1px solid #fff;background:#f1f1f1;float:left;padding-left:25px;}
+.content1 .bringin{width:236px;height:241px;float:left;padding-left:23px;background:#fbfbfb url(../images/wolong/hua1.jpg) no-repeat 166px 116px;}
+.bt{font-size:16px;font-weight:normal;height:33px;margin-top:29px;}
+
+.newsul {width:453px;padding-top:15px;height:162px;}
+.newsul li a{display:block;width:306px;color:#4e4e4e;height:24px;line-height:24px;background:url(../images/wolong/dian.jpg) no-repeat left center;float:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:7px;}
+.newsul li span{float:right;color:#959595;}
+
+.content1 .intro p{width:193px;height:24px;line-height:24px;}
+.content1 .intro .p1{color:#505050;padding:11px 0 13px 0px;}
+.content1 .intro .p2{color:#919191;padding-top:15px;}
+
+.content1 .bringin .txt{color:#5b5b5b;padding:15px 0 20px 0;height:24px;line-height:24px;}
+.content1 .bringin .more{padding-top:36px;}
+/**content2**/
+.content2{width:1000px;height:305px;margin:0 auto;}
+.content2 h3{font-size:18px;height:34px;padding:22px 22px 6px 20px;padding-top:22px;color:#202020;}
+.content2 h3 a{float:right;}
+.content2 dl{width:210px;height:240px;margin:0 20px;float:left;}
+.content2 dd{padding-top:6px;}
+.content2 dd p{height:24px;line-height:24px;color:#515151;}
+
+/***links****/
+.links{width:1000px;height:auto;background:#e5e5e5;margin:0 auto;background:#e5e5e5;overflow:hidden;}
+.links .product{width:422px;height:250px;margin-right:48px;float:left;padding-left:20px;}
+.links .tec{width:153px;margin-right:50px;height:250px;float:left;}
+.links .net{width:277px;height:250px;float:left;}
+
+.linksbt{font-size:16px;height:32px;line-height:32px;padding:22px 0 3px 12px;color:#656565;border-bottom:1px solid #c1c1c1;}
+.links ul li{background:url(../images/wolong/linkj.jpg) no-repeat left center;padding-left:7px;color:#666;height:24px;line-height:24px;}
+.links li a{color:#5e5e5e;}
+
+.product .u1,.u2,.u3{float:left;}
+.product .u1{padding-right:76px;}
+.product .u2{padding-right:66px;}
+
+.links .net{background:url(../images/wolong/map1.jpg) no-repeat 32px 73px;}
+/******bottom******/
+.bottom{width:960px;height:42px;padding:20px;margin:0 auto;}
+.bottom .bnav{color:#858585;float:left;height:20px;padding-top:6px;}
+.bottom .btxt{color:#858585;float:right;height:20px;}
+.bottom .bnav a{color:#858585;}
+.bottom .btxt a{padding-right:5px;}

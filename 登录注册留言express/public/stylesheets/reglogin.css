@@ -1,0 +1,65 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ul li{
+	list-style: none;
+}
+body{
+	background: url(../images/bg.jpg);
+	background-size: 200px;
+}
+a{
+	text-decoration: none;
+	color: deeppink;
+}
+a:hover{
+	color: skyblue;
+}
+form{
+	width: 380px;
+	height: 220px;
+	background: rgba(255,255,255,.6);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -200px;
+	margin-left: -250px;
+	padding: 40px;
+	border-radius: 10px;
+}
+form h4{
+	text-align: center;
+	font-size: 25px;
+	color: hotpink;
+	padding: 10px;
+}
+label{
+	width: 300px;
+	margin: 20px auto;
+	display: block;
+	color: hotpink;
+	font-weight: bold;
+	
+}
+input{
+	width: 220px;
+	height: 30px;
+	border: 1px solid hotpink;
+	outline: none;
+}
+input[type="submit"]{
+	display: block;
+	width: 150px;
+	margin: 0 auto;
+	border: 1px solid hotpink;
+	background: #fff;
+	color: hotpink;
+	border-radius: 5px;
+	outline: none;
+	font-size: 16px;
+}
+input[type="submit"]:hover{
+	background: hotpink;
+	color: #fff;
+}

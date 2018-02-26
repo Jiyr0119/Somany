@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var arr = [[],[],[],[],[]];
+	var num = 1;
+	//为数组赋值
+	/*for(var i = 0 ; i < 5 ; i++){
+		for(var j = 0 ; j < 5 ; j++){
+			arr[i][j] = num++;//赋值
+		}
+	}*/
+	
+	document.write("<table>");
+	for(var i = 0 ; i < 5 ; i++){
+		document.write("<tr>");
+		for(var j = 0 ; j < 5 ; j++){ //为数组赋值
+			arr[i][j] = num++;//赋值
+		}
+		
+		for(var j = 0 ; j <= i ; j++){//打印左下半三角
+			 document.write("<td>"+ arr[i][j] +"</td>" );
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+	
+	/*
+	 8
+	 88
+	 888
+	 8888
+	 88888
+	 * */
+</script>

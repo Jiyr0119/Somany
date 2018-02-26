@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<select name="" id="prov"><option>请选择省</option></select>
+		<select name="" id="city"><option>请选择市</option></select>
+		<select name="" id="country"><option>请选择县</option></select>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var arr_prov = ["河北","河南","黑龙江","辽宁"];//省
+	//                0     1      2      3
+	var arr_city = [["石家庄","邯郸"],["郑州","开封","南阳"],["哈尔滨","齐齐哈尔","牡丹江","佳木斯"],["沈阳"]];//市
+	 			     
+	//                  0     1        0     1     2       0
+	
+	var arr_country = [[["s1","s2"],["h1"]],[["z1","z2"],["k1"],["n1"]],[["e1"],["q1","q2"],["m1"],["j1"]]];//县
+	//                    00          01        10          11     12      20
+	 
+	//页面加载时  将  省  信息添加到第一个下拉列表中
+	for(var i = 0 ; i <　arr_prov.length ; i++){
+		$("#prov").append("<option value="+i+">"+arr_prov[i]+"</option>");
+	}
+	
+	// 给省一个change   选择省  改变 市下拉列表的内容
+	$("#prov").change(function(){
+		//alert( $(this).val() );
+		//$("#city").empty();
+		$("#city")[0].length = 1; //jquery 中的length属性是只读的   js中的length属性可读写
+		var index = $(this).val(); // 0 1 2 3
+		var cityInfo = arr_city[index];
+		for(var i = 0 ; i < cityInfo.length ; i++){
+			$("#city").append("<option value="+index+"_"+i+">"+cityInfo[i]+"</option>");
+		}
+	})
+	
+	$("#city").change(function(){
+		//alert( $(this).val() );
+		$("#country")[0].length = 1;
+		var str = $(this).val();  //获取县对应的省和市的下标  
+		var prov_index = str.split("_")[0];//省下标
+		var city_index = str.split("_")[1];//市的下标
+		var countyInfo = arr_country[prov_index][city_index];
+		for(var i = 0 ; i < countyInfo.length ; i++){
+			$("#country").append("<option>"+countyInfo[i]+"</option>");
+		}
+	})
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			.box{
+				width:1205px;    /*防止某一刻运动时,加起来的值大于1200,掉下去*/
+				margin: 100px auto;
+			}
+			.box li{
+				width: 200px;
+				height: 260px;
+				position: relative;
+				float: left;
+			}
+			.box li:nth-child(1){
+				background: url(images/1.jpg) center no-repeat;
+			}
+			.box li:nth-child(2){
+				background: url(images/2.jpg) center no-repeat;
+			}
+			.box li:nth-child(3){
+				background: url(images/3.jpg) center no-repeat;
+			}
+			.box li:nth-child(4){
+				background: url(images/4.jpg) center no-repeat;
+			}
+			.box li:nth-child(5){
+				background: url(images/5.jpg) center no-repeat;
+			}
+			.box li:nth-child(6){
+				background: url(images/6.jpg) center no-repeat;
+			}
+			.box .mask{
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,.4);
+				position: absolute;
+			}
+			.box .txt{
+				width: 30px;
+				font-size: 28px;
+				color: #fff;
+				position: absolute;
+				top: 50px;
+				left: 50%;
+				margin-left: -15px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="box">
+			<li>
+				<div class="mask"></div>
+				<div class="txt">园林酒店</div>
+			</li>
+			<li>
+				<div class="mask"></div>
+				<div class="txt">前端酒店</div>
+			</li>
+			<li>
+				<div class="mask"></div>
+				<div class="txt">设计酒店</div>
+			</li>
+			<li>
+				<div class="mask"></div>
+				<div class="txt">青年旅社</div>
+			</li>
+			<li>
+				<div class="mask"></div>
+				<div class="txt">特色客栈</div>
+			</li>
+			<li>
+				<div class="mask"></div>
+				<div class="txt">海岛酒店</div>
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		/*
+		 1. 给每个li添加鼠标移入事件
+		 2. 鼠标移入时，当前li的宽度变为400 ， mask 隐藏， txt 隐藏  
+		 		             其他的li 宽度变为160
+		 3. 鼠标移出时，所有的li恢复原来宽度200    刚才移入的li mask 出现。txt出现
+		 */
+		
+		$(function(){
+			//鼠标移入事件   (运动是链式队列的的，stop停一下)
+			$(".box li").mouseenter(function () {
+				//当前的 li 宽度变为400 ,mask txt 隐藏
+				$(this).stop(true).animate({
+					width:400
+				}).children().hide();
+				
+				//其他的li 宽度变为160
+				$(this).siblings().stop(true).animate({
+					width:160
+				}).children().show();
+			});
+			
+			//鼠标移出事件 
+			$(".box").mouseleave(function(){
+				$(this).children().stop(true).animate({
+					width:200
+				}).children().show();
+			});
+			
+			
+		})
+	</script>
+</html>

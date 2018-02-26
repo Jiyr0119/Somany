@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="http://www.baidu.com" id="judge" >
+			<table>
+				<tr>
+					<td>用户名:</td>
+					<td> <input type="text" id="uname" /></td>
+					<td> <span id="s1">用户名只能由字母或数字或下划线组成的3--8位字符</span></td>
+				</tr>
+				<tr>
+					<td>密码:</td>
+					<td> <input type="text" id="upwd" /></td>
+					<td> <span id="s2">密码不能少于6位</span></td>
+					
+				</tr>
+				<tr>
+					<td>确认密码:</td>
+					<td> <input type="text" id="qpwd" /></td>
+					<td> <span id="s3">和密码一致</span></td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td> <input type="radio" name="sex" id="boy"/>男<input type="radio" name="sex" id="girl"/>女</td>
+					<td> <span id="s4">必选一项</span></td>
+				</tr>
+				<tr>
+					<td>爱好:</td>
+					<td> <input type="checkbox" name="hobby" />学习<input type="checkbox" name="hobby" />游戏<input type="checkbox" name="hobby" />打球</td>
+					<td> <span id="s5">至少选择两项</span></td>
+				</tr>
+				<tr>
+					<td>学历:</td>
+					<td> <select name="" id="sel">
+						<option value="">请选择</option>
+						<option value="小本">小本</option>
+						<option value="初本">初本</option>
+						<option value="高本">高本</option>
+						<option value="大本">大本</option>
+					</select></td>
+					<td> <span id="s6">必选一项</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td> <input type="submit" value="提交" /><input type="reset" value="重置" /></td>
+					<td> </td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	/*	思路：以上三个都是文本框判断失去焦点的 可是做到输入完提示，用户体验好   
+		以下的三个都是判断选项的，写成函数
+     	二者都是判断是否满足条件，若满足就return ture 否则 false 
+      	最后 onsubmit,的时候验证每个表单元素返回值，全true则提交*/
+	
+	
+	//验证用户名: 用户名只能由字母或数字或下划线组成的3--8位字符
+	
+	var flagUname = false;     //先定义一个表示不成功的，如果成功  flagName = true
+	$("uname").onblur = function(){    
+		var reg = /^\w{3,8}$/;
+		var uname = $("uname").value;
+		$("s1").style.display = "block"; 
+		if( reg.test(uname) ){
+			$("s1").innerHTML = "合法";
+			flagUname = true;
+		}else{
+			$("s1").innerHTML = "用户名只能由字母或数字或下划线组成的3--8位字符";
+		}
+	}
+
+    
+    //验证密码:  密码不能少于6位
+    var flagPwd=false;
+    $("upwd").onblur=function(){
+    	var reg = /^.{6,}$/;
+		upwd = $("upwd").value;
+		$("s2").style.display="block";
+		if(reg.test(upwd)){
+			$("s2").innerHTML="合法";
+			flagPwd=true;
+		}else{
+			$("s2").innerHTML="密码不能少于6位"
+			flagPwd=false;   //合法以后，再改变时，会改变
+		}
+    }
+    
+    
+    //确认密码
+      var flagQpwd=false;
+    $("qpwd").onblur=function(){
+    	mypwd=$("qpwd").value;
+    	$("s3").style.display="block";
+		if(mypwd==upwd){  // 用到的变量是全局的
+			$("s3").innerHTML="合法";
+			flagQpwd=true;
+		}else{
+			$("s3").innerHTML="两次密码不一致"
+			flagQpwd=false;
+		}
+    }
+     
+    
+    //确认性别 必选一项   单选框 
+    function checkSex(){
+    	var oSex=document.getElementsByName("sex");
+    	for(var i=0;i<oSex.length;i++){
+    		if(oSex[i].checked){
+    			return true;
+    		}
+    	}
+    	$("s4").style.display="block";
+    	$("s4").style.display="必须选一项";
+    }
+    
+    //确认爱好  至少为两项  复选款 
+    function checkHobby(){
+    	count=0;
+		var hobby=document.getElementsByName("hobby");
+		for(var i=0;i<hobby.length;i++){
+			if(hobby[i].checked){
+				count++
+			}
+		}
+		if(count<2){
+			$("s5").style.display="block";
+			$("s5").innerHTML="至少选择两项爱好"
+			return false;
+		}else{
+			return true;
+		}
+    }
+    
+    //确认学历  必须选一项   必选项
+    function checkXueli(){
+    	
+    	if($("sel").value==""){
+    		$("s6").style.display="block";
+    		$("s6").innerHTML="学历必选";
+   			return false;
+    	}else{
+    		return true;
+    	}
+    }
+
+	
+	//表单验证  验证每一个表单项,每一项都为ture则提交，否则不提交
+	$("judge").onsubmit = function(){
+		if(flagUname&&flagPwd&&flagQpwd&&checkSex()&&checkHobby()&&checkXueli()){
+			return true;
+		}
+		return false;
+	}
+</script>

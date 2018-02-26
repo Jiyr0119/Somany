@@ -1,0 +1,120 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				list-style: none;
+			}
+			img{
+				display: block;
+				border: none;
+			}
+			#box{
+				width: 752px;
+				border: 1px solid #ccc;
+				margin: 100px auto;
+				padding:10px 0 0 10px ;
+				overflow: hidden;  /* 为什么?*/
+			}
+			#box li{
+				width: 178px;
+				height: 125px;
+				float: left;
+				margin: 0 10px 10px 0;
+				overflow: hidden;
+				position: relative;
+			}
+			#box li .mask{
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,.3);
+				position: absolute;
+				display: none;
+			}
+			#box li p{
+           		width:178px;
+            	height: 25px;
+	            line-height: 25px;
+            	text-align: center;
+            	font-size:14px;
+            	color: #fff;
+				background:url(images/bg.png) no-repeat 5px 0;
+				background-color:rgba(0,0,0,.3) ;
+				position: absolute;
+				bottom: -25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/01.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/02.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/03.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/04.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/05.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/06.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/07.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+				<li>
+					<div class="mask"></div>
+					<a href="#"><img src="images/08.JPG"/></a>
+					<p>百度一下你就知道</p>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		//用jQ实现 P 标签的背景图的设置
+		$("li p").each(function(index,ele){
+			$(ele).css("background-position-y",-index*25)
+		})
+		
+		$(function(){
+			
+			$("#box li").hover(function(){
+				$(this).find("p").stop().animate({bottom:0},1000);
+				
+			},function(){
+				$(this).find("p").stop().animate({bottom:-25},1000);
+			
+			})
+		});
+		
+	</script>
+</html>

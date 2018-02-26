@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+#m{
+	display:none;
+}
+</style>
+</head>
+<body>
+	<input type="button" value="显示" id="btn" />
+	<img src="../img/123.jpg" alt="" id="m"/>
+</body>
+</html>
+<script>zai 
+	var oBtn=document.getElementById("btn")
+	var oImg=document.getElementById("m")
+	oBtn.onclick=function(){
+		var flag=oBtn.value;
+		switch(flag){
+			case "显示":{oImg.style.display="block";oBtn.value="隐藏";break;}
+			case "隐藏":{oImg.style.display="none";oBtn.value="显示";break;}
+		}
+	}
+
+	
+</script>

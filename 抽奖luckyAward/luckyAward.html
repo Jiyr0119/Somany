@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				/*background: #615A5A;*/
+			}
+			.box{
+				width: 800px;
+				height: 800px;
+				margin: 0 auto;
+				position: relative;
+			}
+			#panel-canvas{
+				display: block;
+				margin: 0 auto;
+				/*background: mistyrose;*/
+				position:relative;
+				transition: all 2s;
+			}
+			#point-canvas{
+				display: block;
+				position:absolute;
+				left: 0;
+				top: 0;
+			}
+			.btn{
+			    display: block;
+			    width: 88px;
+			    height: 20px;
+			    font-size: 30px;
+			    text-decoration: none;
+			    position: absolute;
+			    top: 368px;
+			    left: 680px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<canvas id="panel-canvas" width="800" height="800"></canvas>
+			<canvas id="point-canvas" width="800" height="800"></canvas>
+		</div>
+		<a href="#" class="btn">点击抽奖</a>
+		<script src="jquery-1.8.3.js"></script>
+		<script src="luckyAward.js"></script>
+		<script type="text/javascript">
+			function Page(){
+				this.canvasPanelElem = document.querySelector("#panel-canvas");
+				this.canvasPointElem = document.querySelector("#point-canvas");
+				this.btnClickElem = $(".btn");
+			}
+			
+			Object.assign(Page.prototype, {
+				init: function() {
+					this.bindEvents();
+					this.panelCanvas = new Panel(this.canvasPanelElem);
+					this.panelCanvas.init();
+					
+					this.pointCanvas = new Point(this.canvasPointElem);
+					this.pointCanvas.init();
+				},
+				
+				bindEvents:function (){
+					this.btnClickElem.on("click",$.proxy(this.handelClick,this));
+				},
+				
+				handelClick: function() {
+					this.canvasPanelElem.style.transform = 'rotate('+ (Math.floor(Math.random()*(3000-2000+1)+2000)) +'deg)'
+				}
+			});
+			
+			var page = new Page();
+			page.init();
+		</script>
+	</body>
+</html>

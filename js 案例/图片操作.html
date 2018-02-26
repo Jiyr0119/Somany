@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		li{
+			list-style: none;
+			float: left;
+			text-align: center;
+		}
+	</style>
+	<body>
+		<ul id="u">
+			<!--<li><img src="a.jpg"/><p>小米</p></li>-->
+		</ul>
+	</body>
+</html>
+<script>
+	var jsonObj = {
+		"info":[
+					{"src":"a.jpg","name":"小米"},
+					{"src":"b.jpg","name":"大米"},
+					{"src":"c.jpg","name":"高粱米"}
+				]
+	}
+	var str = "";
+	for(var i in jsonObj.info){
+		item = jsonObj.info;
+		str += '<li><img src="'+item[i].src+'"/><p>'+item[i].name+'</p></li>';
+	}
+	document.getElementById("u").innerHTML = str;
+	
+	document.getElementById("u").onmouseover = function(evt){
+		var e = evt || event;
+		//alert(e.target.nodeName);
+		if( e.target.nodeName =="IMG" ){
+			e.target.style.border = "1px solid red";
+			e.target.nextElementSibling.style.background = "teal";
+		}
+	}
+	document.getElementById("u").onmouseout = function(evt){
+		var e = evt || event;
+		//alert(e.target.nodeName);
+		if( e.target.nodeName =="IMG" ){
+			e.target.style.border = "";
+			e.target.nextElementSibling.style.background = "";
+		}
+	}
+</script>

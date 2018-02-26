@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			ul li.yiji{
+				list-style-image: url(images/expand.gif);
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+		<li class="yiji">主题市场
+		<ul>
+			<li>运动派
+				<ul>
+					<li>三级菜单a</li>
+					<li>三级菜单b</li>
+					<li>三级菜单c</li>
+					<li>三级菜单d</li>
+				</ul>
+			</li>
+			<li>有车族
+				<ul>
+					<li>三级
+						<ul>
+							<li>四级</li>
+							<li>四级</li>
+							<li>四级</li>
+							<li>四级</li>
+						</ul>
+					</li>
+					<li>三级</li>
+					<li>三级</li>
+					<li>三级</li>
+				</ul>
+			</li>
+			<li>生活家</li>
+		</ul>
+		</li>
+		<li class="yiji">特色购物
+			<ul>
+				<li>淘宝二手</li>
+				<li>拍卖会</li>
+				<li>爱逛街</li>
+				<li>全球购</li>
+				<li>淘女郎</li>
+			</ul>
+		</li>
+		<li class="yiji">优惠促销
+			<ul>
+				<li>天天特价</li>
+				<li>免费试用</li>
+				<li>清仓</li>
+				<li>1元起拍</li>
+			</ul>
+		</li>
+		<li class="yiji">工具</li>
+	</ul>
+	</body>
+	<script type="text/javascript">
+	//入口函数 
+	
+	/*   
+	思路： 1. 页面加载，将没有子集ul的li的列表符号去掉   $("li:not(:has(ul))").css("list-style","none")
+		 2. 给有ul子集的li添加点击事件        $("li:has("ul)").click(function(){...});
+		 3. 含有ul的li才可以处罚事件         if(this == event.target){...}
+		 4. 读取display判断当前的状态，  none时 --- "-"    block时----"+"
+		 5. 点击的li 的孩子ul show  hide 切换     $(this).children("ul).toggle(500)
+	*/
+		$(function(){
+			$("li:not(:has(ul))").css("list-style","none");
+		});
+			
+			$("li:has(ul)").click(function(){
+				if(this == event.target){
+					
+					if($(this).children("ul").css("display")=="none"){
+						$(this).css("list-style-image", "url(images/expand.gif)");
+					}else{
+						$(this).css("list-style-image", "url(images/collapse.gif)");
+					}
+					$(this).children("ul").toggle(500);
+				}
+				
+			});
+			
+		
+	</script>
+</html>

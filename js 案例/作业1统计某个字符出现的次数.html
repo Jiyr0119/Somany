@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	/*var str="hgghguguBBBBhkjkjkjij";
+	str=str.toLowerCase();
+	var arr=str.split("");
+	arr=arr.sort();
+	var count=1;
+	for(var i=0;i<arr.length;i++){
+		if(arr[i]==arr[i+1]){
+			count++;
+		}else{
+			document.write("字符中"+arr[i]+"出现了"+count+"次"+"<br>");
+			count=1;
+		}
+		
+	}*/
+	//方式二
+	var str="hgghguguBBbBBhkjkjkjij";
+	//思路：  获取0--127中每一个字符编码对应的字符  ， 再统计这个字符在str中出现的次数
+	str = str.toLowerCase();
+	for(var i = 0 ; i<= 127 ; i++){
+		var ch = String.fromCharCode(i);
+		var count = 0;
+		//统计ch字符在str中出现的次数
+		for(var j = 0; j < str.length; j++){
+			if( ch == str.charAt(j) ){
+				count++;
+			}
+		}
+		if( count>0 ){
+			console.log("字符"+ch+"出现了"+count+"次");
+		}
+	}
+</script>

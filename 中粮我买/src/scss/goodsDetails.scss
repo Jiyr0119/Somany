@@ -1,0 +1,379 @@
+.nav_first{
+    display: none;
+}
+#main{
+    width: 100%;
+    overflow: hidden;
+    .detail_top{
+        width: 1210px;
+        margin: 0 auto;
+        .detail_nav{
+            height: 34px;
+            line-height: 34px;
+            a{
+                display: inline-block;
+                padding: 0 5px;
+                color: #606060;
+            }
+            a:hover{
+                text-decoration: underline;
+                color: #318700;
+            }
+        }
+        .detail_content{
+           .detail_left{
+               width:350px ;
+               height: 520px;
+               position: relative;
+               float: left;
+               .small{
+                    width:350px;
+                    height:350px;   
+                    background: red;
+                    img{
+                        width: 350px;
+                        height: 350px;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                    }
+                    #mask{
+                        width:175px;
+                        height:175px;
+                        background:grey;
+                        opacity: .5;  
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        display:none;
+                    }
+                    #layer{
+                        position:absolute;
+                        top:0;
+                        left:0;
+                        width: 350px;
+                        height: 350px;
+                        opacity:0.4 ;
+                        display:none;
+                    } 
+               }
+               #small{
+                    position:relative;
+                    cursor:move; 
+                }
+                #big{
+                    width:360px;
+                    height:400px;
+                    border:1px solid #ccc;
+                    overflow:hidden;
+                    position:absolute;
+                    top:0;
+                    left:360px;
+                    display:none;
+                    z-index: 1000;
+                    .bigImage{
+                        position:absolute;
+                        top:0;
+                        left:0;
+                    }
+               }
+               #bottom{
+                   width: 350px;
+                   overflow: hidden;
+                   position: absolute;
+                   top: 350px;
+                   left: 0; 
+                   border-top: 1px solid #ccc;
+                   padding-top:10px ;
+                   li{
+                      float: left;
+                      width: 60px;
+                      margin: 3px 4px;
+                      text-align: center;
+                      border: 1px solid #ccc;
+                   }
+               } 
+           }
+           .detail_right{
+               width: 540px;
+               height: 500px;
+               float: left;
+               margin-left: 40px;
+               .dr_title{
+                   h1{
+                        width: 540px;
+                        height: 22px;
+                        margin: 5px 0;
+                        font-size: 18px;
+                        font-weight: bold;
+                        color: #666;
+                        overflow: hidden;
+                   }
+               }
+               .price_wrap{
+                    height: 36px;
+                    padding-left: 16px;
+                    padding-top: 20px;
+                    background: #f5f5f5;
+                    overflow: hidden;
+                    .price_con{
+                        height: 26px;
+                        overflow: hidden;
+                        .buyPrice{
+                            display: inline-block;
+                            height: 24px;
+                            font-weight: bold;
+                            line-height: 24px;
+                            font-size: 26px;
+                            color: #c40000;
+                            em{
+                                font-style: normal;
+                                font-size: 15px;
+                            }
+                        }
+                        .retail{
+                            display: inline-block;
+                            height: 18px;
+                            margin: 6px 10px 0px 10px;
+                            padding: 0 5px;
+                            font-family: "寰蒋闆呴粦";
+                            line-height: 18px;
+                            background: #c40000;
+                            color: #fff;
+
+                        }
+                    }
+               }
+               .promotions{
+                   position: relative;
+                    padding: 13px 0 10px 16px;
+                    background: #f5f5f5;
+                    overflow: hidden;
+                    .pro_line{
+                        width: 500px;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        margin-top: 6px;
+                        dl{
+                            dt{
+                                float: left;
+                                width: 56px;
+                                height: 20px;
+                                line-height: 21px;
+                                text-align: center;
+                                color: #fff;
+                                background: #c40000 none repeat scroll 0 0;
+                            }
+                            .title{
+                                float: left;
+                                margin: 0 15px 0 5px;
+                                span{
+                                    float: left;
+                                    line-height: 20px;
+                                }
+                            }
+                            .arrow{
+                                position: relative;
+                                margin-top: 2px;
+                                padding-left: 10px;
+                                float: left;
+                                i{
+                                    font-size: 1px;
+                                    display: block;
+                                    position: absolute;
+                                    top: 4px;
+                                    left: 0;
+                                    width: 11px;
+                                    height: 11px;
+                                    background: url(../../images/newDetail_btn.png) no-repeat -122px 0;
+                                }
+                                a{
+                                    float: left;
+                                    color: #c40000;
+                                    cursor: pointer;
+                                    margin-left: 6px;
+                                }
+                            }
+                            
+                        }
+                    }
+               }
+               .region{
+                   .address_del{
+                       line-height: 34px;
+                       padding-left: 16px;
+                        dt{
+                            float: left;
+                            height: 34px;
+                            width:42px ;
+                        }
+                        .addr_select{
+                            float: left;
+                            height: 34px;
+                            position: relative;
+                            z-index: 99;
+                            .text{
+                                position: relative;
+                                z-index: 101;
+                                width: auto;
+                                height: 24px;
+                                margin-top: 6px;
+                                margin-right: 10px;
+                                padding: 0 17px 0 5px;
+                                line-height: 24px;
+                                background: #fff;
+                                border: 1px solid #cacaca;
+                                .region_txt{
+                                    height: 22px;
+                                    overflow: hidden;
+                                    line-height: 22px;
+                                }
+                            }
+                        }
+                        .expectTime{
+                            float: left;
+                            height: 34px;
+                            line-height: 34px;
+                        }
+                   }
+                   .address_tip{
+                        line-height: 34px;
+                        padding-left: 16px;
+                        dt{
+                            float: left;
+                            height: 34px;
+                            width: 42px;
+                        }
+                        dd{
+                            float: left;
+                            height: 34px;
+
+                        }
+                   }
+               }
+               .buy{
+                    .merge{
+                        padding-left: 16px;
+                        .choose{
+                            float: left;
+                            overflow: hidden;
+                            margin-bottom: 32px;
+                            dl{
+                                dt{
+                                    float: left;
+                                    margin: 8px 0;
+                                    line-height: 30px;
+                                    width: 42px;
+                                    height: 30px;
+                                }
+                                .choose_num{
+                                    float: left;
+                                    margin: 8px 0;
+                                    line-height: 30px;
+                                    width: 480px;
+                                    overflow: hidden;
+                                    .choose_con{
+                                        display: inline-block;
+                                        width: 73px;
+                                        height: 28px;
+                                        margin-right: 8px;
+                                        border: 1px solid #dcdcdc;
+                                        vertical-align: middle;
+                                        overflow: hidden;
+                                        .add{
+                                            width: 13px;
+                                            height: 28px;
+                                            line-height: 28px;
+                                            text-align: center;
+                                            cursor: pointer;
+                                            overflow: hidden;
+                                            float: left;
+                                        }
+                                        .text{
+                                            width: 45px;
+                                            height: 28px;
+                                            padding: 0;
+                                            line-height: 28px;
+                                            text-align: center;
+                                            border-left: 1px solid #dcdcdc;
+                                            border-right: 1px solid #dcdcdc;
+                                            float: left;
+                                        }
+                                        .dec{
+                                            width: 13px;
+                                            height: 28px;
+                                            line-height: 28px;
+                                            text-align: center;
+                                            cursor: pointer;
+                                            overflow: hidden;
+                                            float: right;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .btn_box{
+                            position: relative;
+                            padding-top: 15px;
+                            margin-left: 16px;
+                            .btn_warp{
+                                margin-top: 30px;
+                                .buy_btn{
+                                    width: 194px;
+                                    height: 24px;
+                                    line-height: 24px;
+                                    color: #fff;
+                                    font-size: 24px;
+                                    text-align: center;
+                                    padding-top: 11px;
+                                    padding-bottom: 11px;
+                                    position: relative;
+                                    float: left;
+                                    margin-right: 20px;
+                                    cursor: pointer;
+                                    background: #c40000;
+                                    margin-left: -16px;
+                                    .png{
+                                        display: inline-block;
+                                        width: 20px;
+                                        height: 15px;
+                                        margin-right: 6px;
+                                        background: url(../../images/details.png) no-repeat 0 0;
+                                        vertical-align: middle;
+                                    }
+                                }
+                                .buy_phone{
+                                    text-align: center;
+                                    font: 24px;
+                                    width: 170px;
+                                    height: 24px;
+                                    padding: 10px 8px;
+                                    border: 1px solid #c40000;
+                                    overflow: hidden;
+                                    position: relative;
+                                    float: left;
+                                    margin-right: 20px;
+                                    cursor: pointer;
+                                    .saoyisao{
+                                            background: url(../../images/mqr.png);
+                                            display: inline-block;
+                                            width: 20px;
+                                            height: 20px;
+                                            margin-right: 6px;
+                                            vertical-align: middle;
+                                    }
+                                }
+                            }
+                        }
+                    }
+               }
+               
+           }
+        }
+        
+    }
+    .detail_bottom{
+        width: 1210px;
+        margin: 0 auto;
+    }
+}

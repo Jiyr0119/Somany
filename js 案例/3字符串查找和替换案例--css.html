@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+	<style type="text/css">
+		*{margin:0; padding:0; font-size:14px; font-famliy:"微软雅黑"; }
+		body{background:#FBFBFB;}
+		.container{
+			border:solid 1px #F1F1F1;
+			width:800px;
+			background:#fff;
+			margin:20px auto;
+			padding-bottom:10px;
+		}
+		.container h1{
+			font-size:22px;
+			font-family:微软雅黑;
+			color:#333;
+			display:block;
+			margin:20px 0 0 20px;
+		}
+		.article_text{
+			margin:10px 0 0 20px;
+			padding-bottom:20px;
+			color:#666;
+			border-bottom:solid 1px #F1F1F1;
+		}
+		#article_content{
+			line-height:28px;
+			padding:20px 20px 20px 20px;
+		}
+		.btndiv{
+			margin:10px auto;
+			width:270px;
+		}
+		.container a{
+			display:inline-block;
+			width:120px;
+			height:32px;
+			line-height:32px;
+			background:#8DC61E;
+			color:#fff;
+			text-align:center;
+			text-decoration:none;
+			font-weight:bold;
+			margin-left:10px;
+		}
+		span{
+			background:#D14836;
+			color:#fff;
+		}
+		label{
+			background:#fff;
+			color:#333;
+			line-height:28px;
+		}
+	</style>	
+</head>
+<body>
+	<div class="container">
+		<h1>温暖活在我的指间</h1>
+		<div class="article_text">时间：2016-04-21&nbsp;&nbsp;&nbsp;&nbsp;阅读：72 次&nbsp;&nbsp;&nbsp;&nbsp;来源：短文学网</div>
+		<div id="article_content">
+			温暖，好似活在春天的迷蒙烟雨里，缠锁云轩；<br>
+			又似活在夏日的青青荷尖上，曼舞菁衫；或是活在金秋的火红枫叶间，随风蹁跹；<br>而我说温暖就活在严冬的脉脉暖阳里，活在我的指尖。
+			连绵阴雨停了，冬日的初阳映照远山清霜，这是一年之中最寒冷的光景。不过明亮的阳光洒落心间，笼罩心中多日的忧郁，亦随之云散烟消。沐浴在阳光的芬芳中，整个人的视野忽觉豁然开朗，心胸也顿时宽广了许多。其实维持心情愉悦并没有什么秘诀，经常出来走走看看，接触自然的旖旎风光就好，何况又逢天公作美呢。
+			极目空天，气韵悠然，好一派大好河山。天地乾坤，流云奔流不息，山水和谐。一排麻雀从头顶掠过，翅膀振动着轻声。不禁感慨，鸟儿虽小，飞翔的却是蓝天，好生令人艳羡。也不禁浮想联翩起来，想和庄子一样梦中化蝶，逍遥行天地。或是，肩生一双羽翼，翱翔天际，云端逐梦。光是想想都令人欢喜，可惜只不过是幻想，可望而不可即。不过光是短暂憧憬，也是乐事一桩，未尝不可。因为于我而言，唯有时时憧憬着，时光才不至于索然无味，生活便多添几分趣味。或许，这我就是所谓的生性乐天吧。不过生活多那么几许阳光，总比置身灰暗要令人欢欣的多，不是吗？
+			除了我，郁闷家中的人，也大都不约而同地出来散心了。仿佛有什么重大的集会，也许是因为压抑太久了吧。或许，是因为人们对自然有着相同的感知吧。而我呢，只是继续一个人静静走在马路上，呆呆的望着远方出神，心情好的如远方蔚蓝的空天。或许，是天性使然吧。因为我的骨子里十分向往安静，向往着无忧无虑的生活。。
+			太阳的光芒照亮了天地，也融化了人世间的阴冷，赠与人们无限希望。抬头向天空望去，阳光刺向了我的眼睛。我伸出双手，去遮挡这热烈的光线。不经意间，数缕阳光从指间溜了进来。原来温暖，一直活在我的指间，从未走远！
+		</div>
+		<div class="btndiv">
+			<a href="javascript:;" id="findBtn">查找</a>
+			<a href="javascript:;" id="replaceBtn">替换</a>
+		</div>
+	</div>
+ 
+</body>
+</html>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("findBtn").onclick = function(){
+		str = $("article_content").innerHTML;
+		res = prompt("请输入要查找的内容");
+		reg = new RegExp(res,"g");
+		$("article_content").innerHTML = str.replace( reg, "<span>"+res+"</span>" );
+	}
+	$("replaceBtn").onclick = function(){
+		replaceCon =  prompt("请输入要替换的内容");
+		$("article_content").innerHTML = str.replace( reg,replaceCon );
+	}
+</script>

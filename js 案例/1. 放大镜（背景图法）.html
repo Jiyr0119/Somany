@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../common.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#box{
+				width:350px;
+				height;350px;
+				border:1px solid black;
+				margin:200px;
+				position:relative;
+			}
+			#small{
+				position:relative;
+			}
+			#mask{    
+				width:175.5px;
+				height:175.5px;
+				background:url(../img/001.jpg);
+				position:absolute;
+				top:0;
+				left:0;
+				display:none;
+			}
+			#center{
+				width:350px;
+				height:355px;
+				background:black;
+				opacity:.6;
+				position:absolute;
+				left:0;
+				top:0;
+				display:none;
+			}
+			#big{
+				width:400px;
+				height:400px;
+				border:1px solid black;
+				position:absolute;
+				top:0;
+				left:360px;
+				overflow:hidden;
+				display:none;
+			}
+			#bigImg{
+				position:absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="small">  <!--顺序不可以改变-->
+				<img src="../img/001.jpg" alt="" id="smallImg"/>
+				<div id="center"></div>
+				<div id="mask"></div>
+			</div>
+			<div id="big">
+				<img src="../img/0001.jpg" alt="" id="bigImg" />
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	//思路:给mask 放一个背景图，mask移动的距离，背景图片的位置向相反的方向移动
+	//    给一个盒子 center，通过颜色，透明度的设计，达到索要的效果
+	
+	// 滑过显示
+	$("small").onmouseover=function(){
+		$("mask").style.display="block";
+		$("big").style.display="block";
+		$("center").style.display="block";
+	}
+	$("small").onmouseout=function(){
+		$("mask").style.display="none";
+		$("big").style.display="none";
+		$("center").style.display="none";
+	}
+	
+	//处理边缘
+	//小图遮罩层的移动
+	$("mask").onmousemove=function(evt){
+		var e=evt||event;
+		var x=e.pageX-$("box").offsetLeft-($("mask").offsetWidth/2);
+		var y=e.pageY-$("box").offsetTop-($("mask").offsetHeight/2);
+		var maxW=$("box").offsetWidth-$("mask").offsetWidth;
+		var maxH=$("box").offsetHeight-$("mask").offsetHeight;
+		x=x<0?0:(x>maxW?maxW:x)
+		y=y<0?0:(y>maxH?maxH:y)
+		$("mask").style.left=x+"px";
+		$("mask").style.top=y+"px";
+		$("mask").style.backgroundPositionX=-x+"px";
+		$("mask").style.backgroundPositionY=-y+"px";
+		
+		//大图移动
+		var bigImgX=x * $("bigImg").offsetWidth/$("smallImg").offsetWidth;
+		var bigImgY=y * $("bigImg").offsetHeight/$("smallImg").offsetHeight;
+		$("bigImg").style.left=-bigImgX+"px";
+		$("bigImg").style.top=-bigImgY+"px";
+	}	
+</script>

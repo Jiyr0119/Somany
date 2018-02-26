@@ -1,0 +1,1 @@
+define(function(){return{checkPhone:function(e){var n=/^1[35789]\d{9}/;return n.test(e)?!0:!1},checkName:function(e){var n=/^\D\w{5,17}$/;return n.test(e)?!0:!1},checkPwd:function(e){var n=/^.{6,13}$/;return n.test(e)?!0:!1}}});

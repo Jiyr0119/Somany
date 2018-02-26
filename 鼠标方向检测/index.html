@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				list-style: none;
+			}
+			#box{
+				width: 1200px;
+				margin: 30px auto;
+			}
+			#box li{
+				width: 240px;
+				height: 240px;
+				float: left;
+				position: relative;
+				overflow: hidden;
+			}
+			#box li .mask{
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,.4);
+				color: #fff;
+				font-size: 16px;
+				line-height: 24px;
+				padding: 60px 20px;
+				box-sizing: border-box;
+				position: absolute;
+				top: -1000px;   /*让遮罩层看不见，划入改变遮罩层位置*/
+				left: -1000px;
+			}
+			#box li img{
+				width: 100%;
+				height: 100%;
+				transition: 1s;
+			}
+			#box li:hover img{
+				transform: scale(1.2);
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="box">
+			<li>
+				<a href="#"><img src="images/1.png"/></a>
+				<div class="mask">站酷网 | 中国最具人气的设计师互动平台<br>国内最活跃的原创设计交流平台</div>
+			</li>
+			<li>
+				<a href="#"><img src="images/2.png"/></a>
+				<div class="mask">植美村 | 中国最受消费者欢迎的二十大品牌<br>中国著名品牌之一</div>
+			</li>
+			<li>
+				<a href="#"><img src="images/3.png"/></a>
+				<div class="mask">植美村 | 中国最受消费者欢迎的二十大品牌<br>中国著名品牌之一</div>
+			</li>
+			<li>
+				<a href="#"><img src="images/4.png"/></a>
+				<div class="mask">零食够 | 各类进口食品、健康零食<br>全球采购，吃出健康国际范</div>
+			</li>
+			<li>
+				<a href="#"><img src="images/5.png"/></a>
+				<div class="mask">澳优乳业 | 中国高端奶粉市场五强中唯一的奶源<br>来自澳洲的中国品牌</div>
+			</li>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			
+			//给每个li添加鼠标划入划出事件
+			$("#box li").bind("mouseenter mouseleave",function(e) {
+					var w = $(this).width();
+					var h = $(this).height();
+					var x = (e.pageX - this.offsetLeft - (w / 2)) * (w > h ? (h / w) : 1);
+					var y = (e.pageY - this.offsetTop - (h / 2)) * (h > w ? (w / h) : 1);
+					
+					//direction的值为“0,1,2,3”分别对应着“上，右，下，左”
+					var direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90) + 3) % 4; 
+					//记录鼠标是移入还是移出
+					var eventType = e.type;
+				
+					let oMask = $(this).children('.mask');
+					
+					if(e.type == 'mouseenter'){
+						//设置mask目前的指定位置
+						switch(direction) {
+							case 0:oMask.css({left: 0,top: -240});break;
+							case 1:oMask.css({left: 240,top: 0});break;
+							case 2:oMask.css({left: 0,top: 240});break;
+							case 3:oMask.css({left: -240,top: 0});break;
+						}
+						// 开始运动 到 0 0 显示出来
+						oMask.stop(true).animate({left: 0,top: 0}, 400);
+
+					}else{
+						let oEnd = {};
+						switch(direction) {
+							case 0:oEnd = {left: 0,top: -240};break;
+							case 1:oEnd = {left: 240,top: 0};break;
+							case 2:oEnd = {left: 0,top: 240};break;
+							case 3:oEnd = {left: -240,top: 0};break;
+						}
+						// 开始运动到指定终点位置
+						oMask.stop(true).animate(oEnd, 400);
+					}
+			});
+
+		});
+	</script>
+</html>

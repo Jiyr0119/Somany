@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		div{
+			width:600px;
+			height:200px;
+			position:relative;
+			border:1px solid red;
+			margin:100px;
+			overflow:auto;
+		}
+		ul{
+			width:600%;
+			position:absolute;
+			left:0;
+		}
+		li{
+			float:left;
+			list-style:none;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<ul id="u">
+				<li><img src="a.jpg" alt="" /></li>
+				<li><img src="b.jpg" alt="" /></li>
+				<li><img src="c.jpg" alt="" /></li>
+				<li><img src="d.jpg" alt="" /></li>
+				<li><img src="a.jpg" alt="" /></li>
+				<li><img src="b.jpg" alt="" /></li>
+			</ul>
+		</div>
+	</body>
+</html>
+<script src="../common.js"></script>
+<script>
+	/*
+	   思路：  如果可视区显示两张图片，赋值第一张第二张图片到所有图片的结尾处
+	 * */
+	var timer = setInterval(autoPlay,30);
+	var num = 0;
+	function autoPlay(){
+		num--;
+		if( num <-1200 ){
+			num=0;
+		}
+		$("u").style.left = num + "px";
+	}
+</script>

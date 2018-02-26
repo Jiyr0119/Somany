@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body{
+			overflow:hidden; /* 触发边框时隐藏滚动条*/
+		}
+		div{
+			width: 30px;
+			height: 30px;
+			background: red;
+			border-radius: 50%;
+			position:absolute;
+			left:5px;
+			top:150px;
+		}
+	</style>
+	<body>
+		<input type="button" value="开始运动" id="btn" />
+		<div id="d"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oBtn = document.getElementById("btn");
+	var ball = document.getElementById("d");
+	var maxW=window.innerWidth - ball.offsetWidth;
+ 	var maxH=window.innerHeight - ball.offsetHeight;
+	var timer = null;
+	var speedX = 8;
+	var speedY =-15;//  初始速度为负数  先向上移动 
+	oBtn.onclick = function(){
+		clearInterval(timer); //解决多次点击，启动多个定时器，加速问题
+		timer = setInterval(function(){
+			x=ball.offsetLeft;
+			y=ball.offsetTop;
+			if(x<=0||x>=maxW){
+				speedX*=-1;
+			}
+			if(y<=0||y>=maxH){
+				speedY*=-1;
+			}
+			ball.style.left = x + speedX + "px" ;
+			ball.style.top = y + speedY + "px";
+		},30)
+	}
+</script>

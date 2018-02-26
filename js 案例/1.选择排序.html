@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function fnsort(arr){
+		for(var i=0;i<arr.length-1;i++){
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[i]>arr[j]){
+					temp=arr[i];
+					arr[i]=arr[j];
+					arr[j]=temp;
+				}
+			}
+		}
+		return arr;
+	}
+	var arr=[10,9,5,45,63,2];
+	fnsort(arr);
+	document.write(arr);
+</script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#canvas{
+				display: block;
+				margin:0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="600"></canvas>
+	</body>
+	<script src="jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		function Page(){
+			this.canvas = document.getElementById("canvas");
+			this.ctx = this.canvas.getContext("2d");
+		};
+		
+		$.extend(Page.prototype, {
+			
+			init: function() {
+				this.ajax();
+			},
+			
+			ajax: function() {
+				$.ajax({
+		 			url:'data.json',
+		 			type:'get',
+		 			success:$.proxy(this.handleDataSucc,this)
+		 		})
+			},
+			
+			handleDataSucc: function(res) {
+				this.dataList = res.dataList;
+				this.colorList = res.colorList;
+				this.step = 500 /(this.dataList.length * 2);
+				this.rate = 400 / 100;	
+				this.drawAxis();
+				this.drawHorizonLine();
+				this.drawHorizonTxt();
+				this.drawDataAreas();
+			},
+			
+			drawDataAreas:function() {
+				this.ctx.save();
+				this.ctx.translate(50, 550); 
+
+				for(var i= 1,j=0; i < this.dataList.length * 2;){
+					this.ctx.beginPath();        
+					this.ctx.moveTo(this.step*(i), 0);    	
+					this.ctx.lineTo(this.step*(i),-(this.dataList[j] * this.rate));     
+					this.ctx.lineTo(this.step*(i+1),-(this.dataList[j] * this.rate));	  
+					this.ctx.lineTo(this.step*(i+1),0);     
+					this.ctx.lineWidth = 1;
+					this.ctx.strokeStyle = "#000";
+					this.ctx.stroke();
+//					this.ctx.fillRect(this.step * i, 0, this.step, -this.dataList[j]*this.rate); // 画矩形时第一个颜色有bug!
+					this.ctx.fillStyle = this.colorList[j];
+					this.ctx.fill();
+					
+					this.ctx.beginPath();
+					this.ctx.moveTo(this.step * i, -this.dataList[j]*this.rate);
+					this.ctx.font = "14px arial";
+					this.ctx.fillStyle = this.colorList[j];
+					this.ctx.fillText(this.dataList[j], this.step * i + 4, -this.dataList[j]*this.rate);
+					this.ctx.fill();
+					
+					i = i + 2; 
+					j = j + 1;
+				}
+				
+				this.ctx.restore();
+			},
+			
+			drawAxis: function() {
+				this.ctx.save();   
+				this.ctx.translate(50, 550); 
+				
+				this.ctx.moveTo(0, 0)
+				this.ctx.lineTo(530, 0);
+				this.ctx.lineWidth = 2;
+				this.ctx.strokeStyle = "#000000";
+				this.ctx.stroke();
+				
+				this.ctx.beginPath();
+				this.ctx.moveTo(0, 0);
+				this.ctx.lineTo(0, -430);
+				this.ctx.lineWidth = 2;
+				this.ctx.strokeStyle = "#000000";
+				this.ctx.stroke();
+				
+				this.ctx.restore();
+			},
+			
+			drawHorizonLine: function() {
+				this.ctx.save();   
+				this.ctx.translate(50, 550); 
+				
+				for (var i = 80; i<=400;) {
+					this.ctx.beginPath();
+					this.ctx.moveTo(0, -i);
+					this.ctx.lineTo(500, -i);
+					this.ctx.lineWidth = 1;
+					this.ctx.strokeStyle = "#ccc";
+					this.ctx.stroke();
+					i = i + 80 ;
+				}
+				
+				this.ctx.restore();
+			},
+			
+			drawHorizonTxt: function() {
+				this.ctx.save();   
+				this.ctx.translate(50, 550); 
+				
+				for (var i = 0,j=0; i<=400;) {	
+					this.ctx.beginPath();
+					this.ctx.font = "16px Arial blod";
+					this.ctx.textAlign = "right";
+					this.ctx.textBaseline = 'middle' 
+					this.ctx.fillStyle = "#000";
+					this.ctx.fillText(j, 0, -i);
+					j = j + 20;
+					i = i + 80 ;
+				}
+				
+				this.ctx.restore();
+			}			
+		});
+		
+		var page = new Page();
+		page.init();
+	</script>
+</html>

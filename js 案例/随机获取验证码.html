@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="txt" /> 
+		<input type="button" value="获取验证码" id="btn"/>
+	</body>
+</html>
+<script>
+	
+	// //随机获取4位数字验证码
+	// //随机获取随机数
+	// function getRand(min,max){
+	// 	return Math.floor(Math.random()*(max-min+1)-min);
+	// }
+	// function getNum(){
+	// 	var arr=[];
+	// 	for(var i=0;i<4;i++){
+	// 		arr.push(getRand(0,9))  // a[ , , , ,]数组的每一位都是0-9的随机数
+	// 	}
+	// 	document.write(arr.join("")+'<br>');  //数组转换成字符串，输出
+	// }
+	
+	// for(var i=1;i<10;i++){
+	// 	getNum();
+	// }
+	
+
+	function $(id){
+		return document.getElementById(id);
+	}
+	function rand(min,max){
+		return Math.floor( Math.random()*(max-min+1) + min );
+	}
+
+	// 方法一: 用if判断，当不满足条件是，就i-- 重新抽取，满足条件放进数组 
+	/*$("btn").onclick = function(){
+		var arr = [];
+		for(var i = 0 ; i < 4 ; i++){
+			//随机获取48-122之间的编码
+			var code = rand(48,122);
+			//除小写，大写，数字之外的
+			if( code>=58&&code<=64 || code>=91&&code<=96 ){   
+				i--;//当前的循环在重新执行一次
+			}else{
+				arr.push( String.fromCharCode(code) );
+			}
+		}
+		$("txt").value = arr.join("");  // 数组转为字符串输出
+	}*/
+
+	// 方法二: 用while 
+	$("btn").onclick = function(){
+		var arr = [];
+		for(var i = 0 ; i < 4 ; i++){
+			var code = rand(48,122);
+			
+			while(code>=58&&code<=64 || code>=91&&code<=96){
+				code = rand(48,122);
+			}
+			
+			arr.push( String.fromCharCode(code) );
+	
+		}
+		$("txt").value = arr.join("");
+	}
+</script>
+
+

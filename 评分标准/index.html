@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		body {
+			background: #ccc;
+		}
+		#box {
+			margin: 50px auto;
+			width: 80px;
+		}
+		#box li {
+			float: left;
+			width: 16px;
+			height: 16px;
+			background: url(star.png) -21px 0 no-repeat;
+		}
+		#box .hover {
+			background-position: 0 0;
+		}
+		</style>
+	</head>
+	<body>
+		<ul id="box">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+	 1. 实现鼠标滑过星星时亮
+	 2. 
+	 */
+	
+	function $(id){
+		return document.getElementById(id)
+	}
+	oBox = $("box");
+	olis = Array.from( document.getElementsByTagName("li") )
+	
+	for(var i=0;i<olis.length;i++){
+		olis[i].index =i ;
+		olis[i].onmouseover=function(){
+			var oThat = this;
+			if( i <oThat.index){
+				olis[i].className="hover";
+			}
+		}
+	}
+</script>

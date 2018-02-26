@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>页面类</title>
+</head>
+<body>
+	<p id="txt"></p>
+</body>
+</html>
+<script>
+	//  页面倒计时，设置计时器，递归自己调用自己 
+	var i = 6;
+	var timer = setTimeout(fun,1000);   //定义计时器
+	function fun(){
+		document.getElementById("txt").innerHTML="您的页面还有"+" "+--i+" "+"秒返回主界面"; 
+		var timer = setTimeout(fun,1000);   //递归调用实现计时
+		if( i==0 ){
+			clearTimeout(timer);   //计时器终端
+			location.href="tiaozhuan.html";   //页面跳转 
+			// window.close();    // 页面关闭
+		}
+	}
+</script>

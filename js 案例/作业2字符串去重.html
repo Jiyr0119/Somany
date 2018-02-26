@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function noRepeat(str){
+		var newStr = "";
+		//思路：判断原串中的某个字符是否出现在新串中
+		for(var i = 0 ; i < str.length ; i++){
+			if( newStr.indexOf( str.charAt(i) ) == -1 ){
+				newStr += str.charAt(i);
+			}
+		}
+		return newStr;
+	}
+	alert( noRepeat( "aaabbddssa" ) );
+</script>

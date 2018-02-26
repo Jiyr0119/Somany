@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>百度跨域</title>
+		<style type="text/css">
+			*{ 
+				margin:0;
+				padding:0;	
+			}
+			#logo{
+				display: block;
+				margin :40px auto;
+				width: 300px;
+			}
+			#search_box{
+				margin:10px auto;
+				width: 700px;
+				vertical-align: bottom;
+			}
+			input{
+				box-sizing: border-box;
+				outline: none;
+				height: 36px;
+				line-height: 36px;
+			}
+			input[name="search_con"]{
+				width: 600px;
+				border: 1px solid #CCCCCC;
+				font-size: 16px;
+			}
+			input[name="search_con"]:focus{
+				border:1px solid #000099;
+			}
+			input[type="submit"]{
+				width: 100px;
+				background: #002DFF;
+				color: #ffffff;
+				border: none;
+			}
+			ul li{
+				list-style: none;
+				line-height: 32px;
+				border-bottom: 1px dashed #CCCCCC;
+				border-left: 1px dashed #CCCCCC;
+				border-right: 1px dashed #CCCCCC;
+				padding: 0 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="logo.png" id="logo"/>
+		<div id="search_box">
+			<form action="javascript:;" name="search_form">
+				<input type="text" name="search_con" id="search_con" value="" /><input type="submit" value="百度一下"/>
+			</form>
+			<ul id="list"></ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 思路 ：jsonp跨域 
+		//      (1)  回调函数
+		// 		(2)  动态创建script便签，设置src属性，并添加到body中，使用完之后移除
+		//1. 回调函数
+		function callback(data){
+//			let oList = document.getElementById("list");
+				//清空一下上次生成的li
+			oList.innerHTML='';
+				
+			//拿到数据后，遍历数据，创建li显示到页面中
+			data.s.forEach(function(v){
+				let oLi = document.createElement("li");
+				oLi.innerHTML = v;
+				oList.appendChild(oLi);
+			});
+		};
+		
+			
+			var 
+				oForm = document.forms['search_form'],
+				oTxt = oForm.elements['search_con'],
+				oList =document.getElementById("list");
+				//下标
+				var index = -1;
+			
+			//搜索框实时输入数据
+			oTxt.oninput = oTxt.onpropertychange=function(){
+	
+				let sTxt = this.value;
+				
+				//判断当前文本框内容不为空时，发起连接
+				if(sTxt != ''){
+					
+					//动态创建script标签 
+					let 
+					 	oScript = document.createElement("script");
+					 	
+					// 更改src属性 , 去网页找值
+					oScript.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + sTxt + '&json=1&p=3&sid=23321_1468_21080_17001_22160&req=2&csor=1&cb=callback&_=1498034713410'
+				
+					//将创建的script标签添加到body中
+					document.body.appendChild(oScript);
+					
+					//用完删除
+					document.body.removeChild(oScript);
+				}else{
+					oList.innerHTML=' ';
+				}
+				
+				//键盘事件
+				document.onkeydown=function(e){
+					var keyCode = e.which || e.keyCode;
+					//下按
+					if(keyCode == 40){
+						index++;
+						change();
+					}
+					//上按
+					if(keyCode == 38){
+						index--;
+						change();
+					}			
+				}
+			}
+			
+		function change(){
+			var oForm = document.forms['search_form'];
+			var oTxt = oForm.elements['search_con'];
+			var olist = document.getElementById("list");
+			var olis = olist.children;
+			
+			if(olis.length != 0){
+				// 小于第一个时，再按移入最后一个 
+				if(index < 0){
+					index = olis.length - 1;
+				}
+				// 大于最后一个时，根据你按键次数 index++ ，计算得出要移入的li
+				if(index >= olis.length){
+					index %= olis.length;  // 8%10 =8  18%10=8  28%10=8
+				}
+				//排他思想，先清空每一个li
+				for(var i=0 ;i <= olis.length -1;i++){
+					olis[i].style.background="#ffffff"
+				}
+				//处理当前 
+				olis[index].style.background = "#cccccc";
+				oTxt.value = olis[index].innerHTML;
+			}
+		}
+		// 鼠标事件
+		oList.onmouseover = function(evt){
+			var e = evt || event;
+			var target = e.target;
+			if(target.nodeName == "LI"){
+				target.style.backgroundColor = "#CCC";
+				oTxt.value = target.innerHTML;
+			}
+		}
+		oList.onmouseout = function(evt){
+			var e = evt || event;
+			var target = e.target;
+			if(target.nodeName == "LI"){
+				target.style.backgroundColor = "";
+			}
+		}
+		oList.onclick = function(evt){
+			var e = evt || event;
+			var target = e.target;
+			if(target.nodeName == "LI"){
+				oTxt.value = target.innerHTML;
+				oList.innerHTML = " ";
+			}
+		}
+	</script>
+</html>

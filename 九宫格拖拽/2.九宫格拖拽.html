@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#Box{
+				width:340px;
+				height:340px;
+				margin: 100px auto;
+				border:1px solid #DCDCDC;
+				position: relative;
+			}
+			.sBox{
+				float:left;
+				width:100px;
+				height:100px;
+				line-height: 100px;
+				background:gainsboro;
+				text-align: center;
+				font-size: 30px;
+				position:absolute;
+			}
+			/*通过js去写定位,比写在css简单 ,而且拖拽主要就是改变left,top*/
+			.on{
+				background: #D14836;
+				opacity: .8;
+				z-index: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="Box">
+			<div class="sBox">1</div>
+			<div class="sBox">2</div>
+			<div class="sBox">3</div>
+			<div class="sBox">4</div>
+			<div class="sBox">5</div>
+			<div class="sBox">6</div>
+			<div class="sBox">7</div>
+			<div class="sBox">8</div>
+			<div class="sBox">9</div>	
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	/*
+          思路:    1 实现div的布局,可以通过CSS也可以通过js，总结计算公式
+	        2  为每一个小div添加点击拖拽事件
+	        3 点击拖拽时小div的样式(z-index;background;opcity),松开后恢复原样
+	        4 位置交换:
+	        	4.1  临界点: 拖拽元素超过另一个元素的水平垂直都过一半之后才交换
+	        	                         被拖拽元素的left + 它的宽度 >= 另一个元素的left + 自身宽度的一半
+	        	          this.offsetLeft + this.offsetWidth >= osBox[i].left +osBox.offsetWidth/2
+	            4.2  判断: 循环遍历，判断当前被拖拽的元素和其他元素是否进行交换
+	                                                    排除自己，通过加索引index 
+	            4.3  交换: 通过索引和公式计算出它应该出现的位置
+	            4.4 bug: 位置通过左上计算的，当满足5的交换条件是，24的也早已满足，添加条件限定满足右下。
+	            4.5 索引交换：更新索引，解决所有的交换都去第一次拖拽的那个。
+	        5 松开鼠标后位置的定位：通过索引+公式计算
+	 */
+	// 给每个div定位
+	var osBox = document.getElementsByClassName("sBox");
+	var Box = document.getElementById("Box");
+	for(var i=0;i<osBox.length;i++){
+		//找规律 计算得来的公式   
+		// 123个 : top =110*0+10   left: 110*(0/1/2)+10
+		// 456个 : top =110*1+10   left: 110*(0/1/2)+10
+		// 789个 : top =110*2+10   left: 110*(0/1/2)+10
+		var icol = i%3;
+		var irow = Math.floor(i/3);
+		osBox[i].style.left = (100+10)*icol + 10 +"px";
+		osBox[i].style.top  = (100+10)*irow + 10 + "px";
+	}
+	
+	//给每个div添加拖拽事件
+	for(var i=0;i<osBox.length;i++){
+		//给每个元素加索引，为了方便进行判断是否交换
+		osBox[i].index=i;
+		osBox[i].onmousedown=function(evt){
+			//获取鼠标距离小div的距离
+			var e = evt || window.event;
+			var x = e.clientX -Box.offsetLeft- this.offsetLeft;  
+			var y = e.clientY-Box.offsetTop- this.offsetTop; 
+			
+			// 点击拖拽时给小div加样式  不能覆盖它之前的样式  += 两个类名用空格隔开
+			this.className += " on";
+			
+			//this 受环境的影响，在down里指向的是选中的元素，在move和up里是指向的是document，
+			//设置一个oThat接收this的变量值,使它在up里使用时不受环境影响，缓存this变量
+			var oThat = this;
+			
+			//兼容低版本的IE
+			if(this.setCapture){  
+				this.setCapture();
+			}
+			//获取当前的位置 
+			document.onmousemove=function(evt){
+				//拖拽
+				var e = evt || window.event;
+				iL= e.clientX - Box.offsetLeft - x;
+				iT= e.clientY - Box.offsetTop - y;
+				oThat.style.left= iL+"px";
+				oThat.style.top = iT+"px";
+				
+				//循环遍历，判断是否进行位置交换
+				for(var j=0 ;j<osBox.length;j++){
+					//排除自己，和其他的进行比较
+					if(oThat != osBox[j] ){
+						if(oThat.offsetLeft + oThat.offsetWidth >= osBox[j].offsetLeft +osBox[j].offsetWidth/2 &&
+						   oThat.offsetTop  + oThat.offsetHeight >= osBox[j].offsetTop +osBox[j].offsetHeight/2 &&
+						   oThat.offsetLeft < osBox[j].offsetLeft +osBox[j].offsetWidth/2 &&
+						   oThat.offsetTop  < osBox[j].offsetTop +osBox[j].offsetHeight/2
+						){
+							//满足条件时，通过索引index 和 公式 计算它应该去的位置 ；
+							var icol = oThat.index %3;
+							var irow = Math.floor(oThat.index/3);
+							osBox[j].style.left = (100+10)*icol + 10 +"px";
+							osBox[j].style.top  = (100+10)*irow + 10 + "px";
+							
+							//交换索引
+							var temp    = oThat.index;
+							oThat.index = osBox[j].index;
+							osBox[j].index = temp;
+						}
+					}
+				}
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null; 
+				document.onmouseup= null;
+				oThat.className = "sBox";
+				// 鼠标松开后，位置的确定
+				var icol = oThat.index %3;
+				var irow = Math.floor(oThat.index/3);
+				oThat.style.left = (100+10)*icol + 10 +"px";
+				oThat.style.top  = (100+10)*irow + 10 + "px";
+				//兼容低版本的IE
+				if(oThat.releaseCapture){
+					oThat.releaseCapture();
+				}
+			}
+		}
+		
+	}
+	
+</script>

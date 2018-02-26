@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		全选:<input type="checkbox" name="qx"/>
+		唱歌:<input type="checkbox" name="hobby"/>
+		跳舞:<input type="checkbox" name="hobby"/>
+		画画:<input type="checkbox" name="hobby"/>
+		编程:<input type="checkbox" name="hobby"/>
+		睡觉:<input type="checkbox" name="hobby"/>
+		游泳:<input type="checkbox" name="hobby"/>
+		反选:<input type="checkbox" name="fx"/>
+	</body>
+</html>
+<script>
+	var qx=document.getElementsByName("qx");
+	var fx=document.getElementsByName("fx");
+	var Iopt=document.getElementsByName("hobby");
+	qx[0].onclick=function(){
+		for(var i=0;i<Iopt.length;i++){
+			Iopt[i].checked=qx[0].checked;
+		}
+	}
+	fx[0].onclick=function(){
+		for(var i=0;i<Iopt.length;i++){
+			if(Iopt[i].checked){
+				Iopt[i].checked=false;
+			}else{
+				Iopt[i].checked=true;
+			}
+		}
+
+	}
+</script>

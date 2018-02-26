@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<select name="" id="prov"><option>请选择省</option></select>
+		<select name="" id="city"><option>请选择市</option></select>
+		<select name="" id="xian"><option>请选择县</option></select>
+	</body>
+	<script type="text/javascript">
+	$(function(){
+		
+		/*
+		 思路：  1. 页面加载时，通过遍历省数组把省的内容添加到下拉菜单去   append(option)
+	 
+		      2. 根据省的下标，可以找到相应的市的数组, 选择一个省时，通过value记录省的下标i 作为找市的变量.
+		      
+		      3. $(this).index  ---》 遍历 arr_city --- 》 添加到市区内容
+		                      每次添加前，清空一下原来的内容。 $("city").empty  会把第一个option请选择也清掉，所以，留下一个
+		         jquery 中的length属性是只读的   s中的length属性可读写。把jQuey 对象转 js 对象 。 对象[0].length = 1;
+		      	
+		      	
+		      4. 同样的方法，找市下边的县区  省的下标和市的下标组合可以找到县区的数组。 
+		      	 0-0  -----》  [s1 s2 s3]
+		      	 0-1  -----》  [b1,b2]
+		      	 0-3  -----》  [l1]
+		      	 1-1  -----》   [z1,z2]
+		      	 记录 下标  ，找相应的县
+		 */
+		
+		var arr_prov = ["河北","河南","山东"]
+	
+	//		              0     1     2
+		
+		var arr_city = [["石家庄","保定","廊坊"],["郑州","开封"],["青岛"]]
+	//                            0                1           2
+	
+		var arr_xian =[[["s1","s2","s3"],["b1","b2"],["l1"]],[["z1","z2"],["k1","k2"]],[["q1"]]]
+ 
+	//                         00             01        02        11           12
+		console.log(arr_prov.length)
+		//页面加载，把省放进下拉菜单内容 
+		for(var i=0 ; i< arr_prov.length;i++){
+			$("#prov").append("<option value = "+ i +">"+arr_prov[i]+"</option>");
+		}
+		
+		//给省一个change , 选择省时，改变市的下拉菜单内容 
+		
+		$("#prov").change(function(){
+			//每次change前清空一下下拉菜单的内容
+			$("#city")[0].length = 1;
+		
+			var index = $(this).val();    //的省的下标
+			var cityInfo=arr_city[index]  //  省下相应的市
+			
+			//把相应的市的内容添加进去
+			for(var i = 0; i < cityInfo.length; i++){
+				$("#city").append("<option value = "+index+"_"+i+">"+cityInfo[i]+"</option>");
+			}
+		})
+		
+		
+		//给市一个change , 选择市时，改变县的下拉菜单内容
+		$("#city").change(function(){
+			//每次change前清空一下下拉菜单的内容
+			$("#xian")[0].length = 1;
+
+			var str = $(this).val()   // 0_1   1_2
+			var provIndex = str.split("_")[0];
+			var cityIndex = str.split("_")[1];
+			
+			var xianInfo = arr_xian[provIndex][cityIndex];
+			//把相应的县的内容添加进去
+			for(var i = 0; i < xianInfo.length; i++){ 
+			console.log(xianInfo[i]);
+				$("#xian").append("<option>"+xianInfo[i]+"</option>");
+			}
+			
+		});
+		
+		
+	});
+	
+	
+	</script>
+</html>

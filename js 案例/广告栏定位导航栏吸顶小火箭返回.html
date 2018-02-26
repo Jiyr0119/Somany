@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+		.top img{
+			height:168px;
+		}
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+		
+    </style>
+</head>
+<body>
+	<div class="top" id="top">
+	    <img src="../img/top.png" alt=""/>
+	</div>
+	<div class="nav" id="Q-nav">
+	    <img src="../img/nav.png" alt=""/>
+	</div>
+	<div class="main">
+	    <img src="../img/main.png" alt=""/>
+	</div>
+	<div id="adv">
+	    <img src="../img/tu11.png" alt=""/>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	 var h=168;   // 导航栏高度 
+	 var g=300;   //广告栏
+	 var oNav=document.getElementById("Q-nav")   // 导航
+	 var oAdv=document.getElementById("adv")    // 广告栏
+	 var oRoc=document.getElementById("rocket")  //小火箭
+	 window.onscroll=function(){    //滚动条事件
+	 	//获取页面兼容写法
+	 	var stop=document.body.scrollTop||document.documentElement.scrollTop;
+	 	
+	 	//超出高度,导航固定在顶端，实现吸顶
+	 	if(stop>h){   
+	 		oNav.style.position="fixed"; 
+	 		oNav.style.top="0";
+	 	}else{
+	 		oNav.style.position="";  //返回时取消固定,不再吸顶
+	 	}
+
+	 	// 广告栏固定在左侧
+	 	if(stop>g){  
+	 		oAdv.style.position="fixed";
+	 		oAdv.style.top="300px";
+	 		oAdv.style.left="0";
+	 	}
+
+	 	// 当超出某高度时，小火箭出现，点击后返回页面顶端，小火箭消失
+	 	if(stop>g){
+	 		oRoc.style.display="block";
+	 		oRoc.style.position="fixed";
+	 		oRoc.style.top="300px";
+	 		oRoc.style.left="0";
+	 	}
+		oRoc.onclick=function(){
+	 			document.body.scrollTop=0;
+	 			oRoc.style.display="none";
+	 	}
+	 }
+</script>

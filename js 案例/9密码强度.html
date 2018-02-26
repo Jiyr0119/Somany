@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title></title>
+     </head>
+     <style type="text/css">
+          *{
+              margin: 0; padding: 0;
+          }
+          input{
+              outline: 0;
+          }
+          #pwd_level {
+              list-style: none; margin: 10px; border-radius: 15px;
+              width: 174px; border: solid 1px gainsboro; height: 16px;
+          }
+          #pwd_level li{
+              background: silver;  float: left;
+              width: 50px; margin: 4px; height: 8px;
+          }
+          #pwd_level_tip {
+              margin: 10px; width: 174px; height: 16px;
+          }
+          #pwd_level_tip div{
+              float: left; width: 58px; height: 16px;
+              text-align: center; line-height: 16px;
+              visibility: hidden;
+          }
+     </style>
+     <body>
+          <input type="text" name="pwd" id="pwd" value="" size="30"/>
+          <ul id="pwd_level">
+              <li style="border-top-left-radius: 8px; border-bottom-left-radius: 8px;"></li>
+              <li></li>
+              <li style="border-top-right-radius: 8px; border-bottom-right-radius: 8px;"></li>
+          </ul>
+          <div id="pwd_level_tip">
+              <div id="">弱</div>
+              <div id="">中</div>
+              <div id="">强</div>
+          </div>
+     </body>
+</html>
+<script src="../common.js"></script>
+<script>
+	$("pwd").onkeyup = function(){
+		//获取输入的密码
+		var str = $("pwd").value;
+		str = str.toLowerCase();
+		var hasNum =  false;//变量值为false  表示没有该字符  数字
+		var hasChar = false;//没有字母
+		var hasSign = false;//没有特殊字符
+		//如果长度小于5  不做密码强弱判断
+		if( str.length < 5 ){
+			for(var i = 0 ; i < 3 ; i++){
+				$("pwd_level").children[i].style.backgroundColor = "silver";
+				$("pwd_level_tip").children[i].style.visibility = "hidden";
+			}
+			return false;
+		}
+		for(var i = 0 ; i < str.length ; i++){
+			var asc =  str.charCodeAt(i);
+			if( asc >= 48 && asc <= 57 ){//数字
+				hasNum = true;//说明有数字
+				continue;
+			}
+			if( asc>=97 && asc <= 122 ){
+				hasChar = true;//说明有字母
+				continue;
+			}
+			if( !(asc >= 48 && asc <= 57) && !(asc>=97 && asc <= 122)){ //既不是数字也不是字母
+				hasSign = true;
+				continue;
+			}
+		}
+		//根据 三个开关变量的值 判断 强中弱
+		if( hasSign ){//强
+			$("pwd_level_tip").children[2].style.visibility = "visible";
+			$("pwd_level_tip").children[0].style.visibility = "hidden";
+			$("pwd_level_tip").children[1].style.visibility = "hidden";
+			
+			$("pwd_level").children[0].style.backgroundColor = "red";
+			$("pwd_level").children[1].style.backgroundColor = "orange";
+			$("pwd_level").children[2].style.backgroundColor = "blue";
+		}else if( hasNum && hasChar ){ //中
+			$("pwd_level_tip").children[2].style.visibility = "hidden";
+			$("pwd_level_tip").children[0].style.visibility = "hidden";
+			$("pwd_level_tip").children[1].style.visibility = "visible";
+			
+			$("pwd_level").children[0].style.backgroundColor = "red";
+			$("pwd_level").children[1].style.backgroundColor = "orange";
+			$("pwd_level").children[2].style.backgroundColor = "silver";
+			
+		}else{ //弱
+			$("pwd_level_tip").children[2].style.visibility = "hidden";
+			$("pwd_level_tip").children[0].style.visibility = "visible";
+			$("pwd_level_tip").children[1].style.visibility = "hidden";
+			
+			$("pwd_level").children[0].style.backgroundColor = "red";
+			$("pwd_level").children[1].style.backgroundColor = "silver";
+			$("pwd_level").children[2].style.backgroundColor = "silver";
+		}
+	}
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+#div{
+	width:500px;
+	height:100px;
+	line-height:100px;
+	border:2px solid white;
+	border-radius:10px;
+	background:pink;
+	margin:100px auto;
+	text-align:center;
+	font-size:48px;
+	color:white;
+}	
+</style>
+</head>
+<body>
+	<div id="div">
+		<img src="../img/0.png" id="Img1"/>
+		<img src="../img/8.png" id="Img2"/>
+		时
+		<img src="../img/1.png" id="Img3"/>
+		<img src="../img/5.png" id="Img4"/>
+		分
+		<img src="../img/0.png" id="Img5"/>
+		<img src="../img/2.png" id="Img6"/>
+		秒
+	</div>
+</body>
+</html>
+<script>
+//	思路：时间改变，图片改变。 取出当前的时间的时分秒,分别对应到图片的地址上上
+	function dateToString(d){    
+		var h=d.getHours()<10?"0"+d.getHours():d.getHours();
+		var m=d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes();
+		var s=d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds();
+		return ""+h+m+s   
+	}
+	setInterval(function(){
+		var d=new Date();         // 实时时间的获取
+		var str=dateToString(d);   //把当前时间变为字符串  20:35:50--->203550
+		var newArr=str.split("")// 把这个字符串变为数组:[2,1,4,0,5,0]
+		var oImgs = document.getElementsByTagName("img");  //获取图片
+		for(var i = 0 ; i < oImgs.length ; i++){  
+			//定时器+for循环控制图片地址的改变
+			oImgs[i].src = "../img/"+newArr[i]+".png";  
+		}
+	},1000)
+	 
+</script>

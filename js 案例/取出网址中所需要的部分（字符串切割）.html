@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var str="www.sohu.com?name=admin&pwd=123456"
+	for(var i=0;i<str.length;i++){
+		arr=str.split("?");
+	 	arr=arr[1].split("&");
+	 	uname=arr[0].split("=")[1];
+	 	upwd=arr[1].split("=")[1];
+	}
+	document.write(uname+'<br>');
+	document.write(upwd+'<br>');
+</script>

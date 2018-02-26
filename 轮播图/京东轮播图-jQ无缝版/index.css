@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img {
+	vertical-align: bottom;
+}
+.slide-box{
+	width: 790px;
+	height: 340px;
+	margin: 50px auto;
+	overflow: hidden;
+	position: relative;
+}
+.slide-box .slide-img-list{
+	position: absolute;
+	left: 0;
+}
+.slide-box .slide-btn-list{
+	width: 80px;
+	height: 20px;
+	padding: 0 4px;
+	background: rgba(255,255,255,.4);
+	border-radius: 10px;
+	box-shadow: 0 0 5px #ccc;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	bottom: 15px;
+}
+.slide-box .slide-btn-list a{
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius:50% ;
+	margin: 5px;
+	float: left;
+}
+.slide-box .slide-btn-list .slide-active{
+	background: #FF4400;
+}
+.slide-box .slide-direction-btn{
+	display: none ;
+}
+.slide-box .slide-direction-btn a{
+	width: 30px;
+	height: 60px;
+	line-height: 60px;
+	color: #fff;
+	font-size: 26px;
+	text-align: center;
+	background: rgba(255,255,255,.5);
+	position: absolute;
+	top: 50%;
+	margin-top:-30px ;
+}
+.slide-box .slide-direction-btn .slide-right{
+	right: 0;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<select name="" id="left" multiple="multiple">
+			<option value="">张学友</option>
+			<option value="">王二麻子</option>
+			<option value="">刘德华</option>
+			<option value="">赵四</option>
+			<option value="">小明</option>
+			<option value="">小红</option>
+			<option value="">小明他哥</option>
+		</select>
+		
+		<input type="button" value="将被选中的加入到右侧黑名单>>"/>
+		<input type="button" value="将右侧被选中的从黑名单移出"/>
+		<input type="button" value="<<将被选中的添加到好友列表"/>
+		<input type="button" value="清空黑名单"/>
+		
+		<select name="" id="right" style="width: 100px;" multiple="multiple">
+			
+		</select>
+	</body>
+</html>
+<script>
+	$(":button").eq(0).click(function(){
+		$("#left :selected").appendTo($("#right"));
+	});
+	
+	$(":button").eq(1).click(function(){
+		$("#right :selected").remove();
+	})
+	
+	$(":button").eq(2).click(function(){
+		$("#right :selected").appendTo($("#left"));
+	});
+	
+	$(":button").eq(3).click(function(){
+		$("#right").empty();
+	});
+</script>

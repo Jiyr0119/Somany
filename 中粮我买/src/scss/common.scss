@@ -1,0 +1,108 @@
+@charset "utf-8";
+/*--------------------------公共样式--------------------------*/
+html,body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img, input{ margin:0; padding:0; }
+a{
+    text-decoration:none;
+}
+ul,ol,li{
+    list-style: none;
+}
+img{
+    border:0;display:block;
+}
+body{
+    font-family:"微软雅黑";
+    font-size:14px;
+}
+b,strong{
+    font-weight:100;
+}
+i,em{
+    font-style:normal;
+}
+h1,h2,h3,h4,h5,h6{
+    font-size:16px;font-weight:100;
+}
+.clearfix:after{
+    content:".";
+    clear:both;
+    display:block;
+    height:0;
+    overflow:hidden;
+    visibility: hidden;
+}
+@mixin arrow($position: 0 0){
+    display: inline-block;
+    width: 6px;
+    height: 3px;
+    margin: 13px 0 0 5px;
+    background: url(../../images/index.png) no-repeat $position;
+    overflow: hidden;
+}
+@mixin bank($position: 0 0){
+    display: inline-block;
+    width: 43px;
+    height: 15px;
+    margin: 8px 0 0 12px;
+    background: url(../../images/base.png) no-repeat $position;
+}
+#content{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.wrap_header{
+    width: 100%;
+    height: 88px;
+    padding-top: 8px;
+}
+.header_logo{
+    float: left;
+    width: 210px;
+    height: 80px;
+    padding-left: 10px;
+}
+.header_adv{
+    width: 780px;
+    height: 80px;
+    float: right;
+}
+.header_line{
+    width: 100%;
+    height: 3px;
+    float: left;
+    background: url(images/login.png) 0px 0px repeat-x;
+    margin-top: 5px;
+    display: inline;
+    overflow: hidden;
+}
+.wrap_footer{
+    padding-top: 20px;
+    background: #efefef;
+    text-align: center;
+}
+.footer_con{
+    width: 1000px;
+    margin: 0 auto;
+    line-height: 26px;
+}
+.beian{
+    display: inline-block;
+    width: 200px;
+}
+.beian_pic{
+    float: left;
+}
+.beian_txt{
+    margin: -4px 0px 0px 5px;
+    color: #606060;
+}
+.num{
+    display: inline-block;
+    margin-top: -4px;
+}
+.footer_blank{
+    height: 28px;
+    background: #8cb91e;
+    line-height: 26px;
+}

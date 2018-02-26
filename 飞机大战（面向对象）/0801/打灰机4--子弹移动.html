@@ -1,0 +1,188 @@
+<!DOCTYPE html >
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>无标题文档</title>
+		<link rel="stylesheet" href="dahuiji.css" />
+
+		
+	</head>
+	<body>
+		<div id="body_main" class="main">
+			<ul id="options" class="options">
+				<li value="1">比较困难</li>
+				<li value="2">非常困难</li>
+				<li value="3">超级困难</li>
+				<li value="4">春哥附体</li>
+			</ul>
+		</div>
+	</body>
+	
+</html>
+<script type="text/javascript">
+	/*
+	角色：  战斗机      敌机     子弹    背景引擎
+	*/
+	
+	/*
+	 组件功能
+	 */
+	function $(id){
+		return document.getElementById(id);
+	}
+	function create(ele){
+		return document.createElement(ele);
+	}
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	window.onload = function(){
+		new Engine();
+	}
+	//背景引擎
+	function Engine(){
+		this.list = $("options").children;
+		this.box = $("body_main");
+		this.init();
+	}
+	Engine.prototype.init = function(){
+		var that = this;
+		//遍历每一个li  点击li  记录点击 难易程度   ，同时让  ul 消失
+		for(var i = 0 ; i <this.list.length ; i++){
+			this.list[i].onclick = function(){
+				that.choice = this.value;//记录难易长度
+				//让ul消失   删除
+				that.removeOpt();
+			}
+		}
+	}
+	//删除ul
+	Engine.prototype.removeOpt = function(){
+		$("options").remove();
+		
+		//删除后  logo 和 动画飞机入场
+		this.animation();
+	}
+	//logo 和  烟雾动画飞机入场
+	Engine.prototype.animation = function(){
+		// logo入场
+		this.logo = create("div");
+		this.logo.className = "logo";
+		document.body.appendChild(this.logo);
+		
+		//烟雾动画飞机入场
+		this.loading = create("div");
+		this.loading.className = "loading";
+		document.body.appendChild(this.loading);
+		
+		//飞机动画
+		var timer = null;
+		var that = this;
+		var index = 1;
+		timer = setInterval(function(){
+			that.loading.style.background = "url(images/loading"+(++index)+".png) no-repeat";
+			if( index == 3 ){
+				index = 0;
+			}
+		},800);
+		
+		//背景移动
+		var bodyMove = 0;
+		setInterval(function(){
+			that.box.style.backgroundPositionY = bodyMove + "px";
+			bodyMove +=5;
+		},30)
+		
+		//5秒中后  logo  和  loading  消失    战斗机入场
+		setTimeout(function(){
+			clearInterval(timer);//停止烟雾飞机运动
+			that.logo.remove();
+			that.loading.remove();
+			
+			//启动游戏
+			that.gameStart();
+		},5000)
+	}
+	Engine.prototype.gameStart = function(){
+		//游戏开始   创建战斗机
+		plane.init();
+		
+		//飞机开火
+		plane.fire(this.choice);
+	}
+	//战斗机   游戏过程中只有一个战斗机   
+	var plane = {
+		init:function(){
+			this.ele = create("div");
+			this.ele.className = "my-warplain";
+			document.body.appendChild(this.ele);
+			
+			//飞机位置
+			this.position();
+		},
+		position:function(){
+			this.ele.style.left = (window.innerWidth - this.ele.offsetWidth)/2 + "px";
+			this.ele.style.top = window.innerHeight - this.ele.offsetHeight + "px";
+			
+			//飞机移动
+			this.move();
+		},
+		move : function(){
+			var that = this;
+			//获取背景的left值和width
+			var offsetLeft = $("body_main").offsetLeft;
+			var offsetWidth = $("body_main").offsetWidth;
+			document.onmousemove = function(e){
+				var e = e || window.event;
+				var x = e.clientX - that.ele.offsetWidth/2;
+				var y = e.clientY - that.ele.offsetHeight/2;
+				//边界处理
+				if( x <= offsetLeft ){
+					x = offsetLeft;
+				}else if( x >= (offsetWidth-that.ele.offsetWidth+offsetLeft) ){
+					x = offsetWidth-that.ele.offsetWidth+offsetLeft;
+				}
+				
+				that.ele.style.left = x + "px";
+				that.ele.style.top = y + "px";
+			}
+		},
+		fire : function(choice){
+			var frequence = 0;//确定开火频率
+			switch(choice){
+				case 1: frequence = 800; break ;
+				case 2 : frequence = 500; break;
+				case 3 : frequence = 300; break;
+				case 4 : frequence = 30; break;
+			}
+			
+			//定时器确定开火
+			setInterval(function(){
+				new Bullet();
+			},frequence)
+		},
+		planeInfo : function(){//记录  飞机的     宽度      高度    left  top
+			return {
+				x:this.ele.offsetLeft,
+				y:this.ele.offsetTop,
+				width :this.ele.offsetWidth,
+				height : this.ele.offsetHeight
+			}
+		}
+	}
+	//子弹
+	function Bullet(){
+		this.ele  = create("div");//创建一个子弹
+		this.init();
+	}
+	//确定子弹的位置  
+	Bullet.prototype.init = function(){
+		this.ele.className = "bullet";
+		document.body.appendChild(this.ele);
+		var planeMsg = plane.planeInfo();//结果是一个json  ，存储飞机位置信息
+		this.ele.style.left = planeMsg.x + planeMsg.width/2 - this.ele.offsetWidth/2 + "px";
+		this.ele.style.top = planeMsg.y - this.ele.offsetHeight + "px";
+	}
+	//敌机
+</script>

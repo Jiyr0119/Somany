@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 150px;
+            height: 180px;
+            background-color: #369;
+            margin: 100px auto;
+            text-align: center;
+        }
+        .box p {text-align: center;
+            line-height: 60px;
+            font-size:12px;
+            color: #fff;
+        }
+        .box span{
+            display: block;
+            width: 75px;
+            height: 75px;
+            margin: 0 auto;
+            font-size:50px;
+            color: #000;
+            background-color: yellowgreen;
+            line-height: 75px;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <p id="p1">年月日 星期</p>
+    <span id ="s1">日期</span>
+</div>
+</body>
+</html>
+<script>
+	function $(id){
+		return document.getElementById(id)
+	}
+	var d = new Date();
+	var arr=["日","一","二","三","四","五","六"]
+	$("p1").innerHTML=d.getFullYear()+"年"+(d.getMonth()+1)+"月"+d.getDate()+"日"+" "+"星期"+arr[d.getDay()];
+	$("s1").innerHTML=d.getDate();
+</script>

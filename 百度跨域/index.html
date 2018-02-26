@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度跨域</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style: none;
+		}
+		#logo {
+			display: block;
+			margin: 50px auto 0;
+			width: 300px;
+		}
+		#search-box {
+			margin: 20px auto;
+			width: 800px;
+		}
+		input {
+			box-sizing: border-box;
+			height: 36px;
+			line-height: 36px;
+			vertical-align: bottom;
+			outline: none;
+		}
+		input[name="search-content"] {
+			width: 700px;
+			border: 1px solid #ccc;
+		}
+		input[name="search-content"]:focus {
+			border-color: blue;
+		}
+		input[type="submit"] {
+			width: 100px;
+			color: #fff;
+			background: blue;
+			border: 1px solid blue;
+		}
+		#list{
+			border-left: 1px dashed #ccc;
+			border-right: 1px dashed #ccc;
+		}
+		#list li{
+			padding: 0 10px;
+			line-height: 36px;
+			border-bottom:1px dashed #ccc;
+		}
+	</style>
+	<script type="text/javascript">
+		// 声明回调函数
+		function callback(data) {
+			let oList = document.getElementById('list');
+
+			// 清空上一次的搜索结果
+			oList.innerHTML = '';
+
+			// 显示最新一次的搜索结果
+			data.s.forEach(function (v) {
+				let oLi = document.createElement('li');
+				oLi.innerHTML = v;
+				oList.appendChild(oLi);
+			});
+		}
+		window.onload = function () {
+			let
+				oSearchForm = document.forms['search-form'],
+				oSearchContent = oSearchForm.elements['search-content'],
+				oList = document.getElementById('list');
+
+			oSearchContent.oninput = oSearchContent.onpropertychange = function () {
+				let sValue = this.value;
+
+				// 用户输入内容的时候，才去后台获取数据
+				if(sValue !== '') {
+					let oScript =document.createElement('script');
+					oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + sValue + '&json=1&p=3&sid=23321_1468_21080_17001_22160&req=2&csor=1&cb=callback&_=1498034713410';
+
+					// 添加新的script标签到body中
+					document.body.appendChild(oScript);
+					// 删除刚才添加的script标签
+					document.body.removeChild(oScript);
+				} else {
+					oList.innerHTML = '';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<img src="logo.png" id="logo">
+	<div id="search-box">
+		<form action="javascript:;" method="GET" name="search-form">
+			<input type="text" name="search-content"><input type="submit" value="百度一下">
+		</form>
+		<ul id="list"></ul>
+	</div>
+</body>
+</html>

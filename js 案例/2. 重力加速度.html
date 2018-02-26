@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		body{
+			overflow:hidden; /* 触发边框时隐藏滚动条*/
+		}
+		div{
+			width: 30px;
+			height: 30px;
+			background: red;
+			border-radius: 50%;
+			position:absolute;
+			left:5px;
+			top:150px;
+		}
+	</style>
+	<body>
+		<input type="button" value="开始运动" id="btn" />
+		<div id="d"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var oBtn = document.getElementById("btn");
+	var ball = document.getElementById("d");
+	var maxW=window.innerWidth - ball.offsetWidth;
+ 	var maxH=window.innerHeight - ball.offsetHeight;
+	var timer = null;
+	var speedX = 8;
+	var speedY =-15;//  初始速度为负数  先向上移动 
+	oBtn.onclick = function(){
+		clearInterval(timer); //解决多次点击，启动多个定时器，加速问题
+		timer = setInterval(function(){
+			x=ball.offsetLeft;
+			y=ball.offsetTop;
+			if(y<=0){
+				y=0;  // 为了解决到了边界 浏览器边界抖动 一瞬间给它一个值
+			}
+			if(y>=maxH){
+				y=maxH; // 为了解决到了边界 浏览器边界抖动 一瞬间给它一个值 
+				speedY*=-0.6    // 能量损耗（速度） 让它每次都比以前小  
+				speedX--      
+				if(speedX<=0){  // 当横向的速度减小到某个范围值时，小球停下来，定时器也也终止
+					speedX=0;   
+					clearInterval(timer);
+				}
+			}
+			speedY++;   //向下的速度越来越大 speedY++  向上的速度越来越小 speedY*=-0.6
+			ball.style.left = x + speedX + "px" ;
+			ball.style.top = y + speedY + "px";
+		},30)
+	}
+</script>
+

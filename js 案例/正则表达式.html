@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../common.js"></script>
+	</head>
+	<body>
+		<input type="text" id="txt" /><input type="button" id="btn" value="校验"/>
+	</body>
+</html>
+<script>
+	$("btn").onclick=function(){
+//		var reg=/admin/ ; //字符串中只要含有admin就可以
+//		var reg=/^15733253107$/; // 有开始和结束标志，字符串必须是这个。内容满足，起始终止也满足。
+//		var reg=/^15\d{9}$/ ;  //表示以15开头的手机号
+//		var reg=/^a\d{3,8}$   //表示以a开头 后边跟着至少3个  至多8个数字 
+//		var reg=/^a\w{6,}$/  //表示以a开头，后边跟着至少6个   数字 字母 下划线
+//		var reg=/^(13|15|18)\d{9}$/ //手机号以13 15 18开头
+//		var reg=/^\D.+$/   //第一个字符不是数字，后边任意无限个字符
+//		var reg=/^http:\/\/www\.baidu\.com$/   //http://www.baidu.com    \ 转义字符把有特殊含义的字符表示出来
+//		var reg=/^http:\/\/www\.baidu\.com$/i  //表示不区分大小写
+//		var reg=/^[1-9]\d\+[1-9]\d$/   //表示两个十位数相加
+//		var reg=/^[1-9]\d{0,3}\+[1-9]\d{0,3}$/           //表示最多两个四位数相加		
+//		var reg=/^[0-9].{6,18}$/    //只能数字开头 长度在6-8
+//		var reg=/^[a-zA-Z].+[0-9]$/  //以字母开头，数字结尾，中间任意
+//		var reg=/^.{6,}$/             //密码不能少于6位
+//		var reg=/^ab{2,6}$/   //??  有问题】  以a开头 b至少出现两个，最多出现6个
+//		var reg=/^\D[a-zA-Z0-9_$]+$/    //不能以数字开头,由字母数字下划线$组成
+//		var reg=/^010\d{8}$/            //以010开头后边是8位数字的座机号
+//		var reg=/^13\d{8}8$/          // 以13开头 8结尾的手机号
+//		var reg=/^\*{6}$/            // 密码只能用6个星
+//		var reg=/^\d(a|A).{0,6}$/   //以数字开头 第二是A或a 后边至多有6 位
+//		var reg=/^\d.\w{6}$/		  //第一位是数字，第二位任意字符，后边是数字字母下划线共8位
+//		var reg=/^[\u2e80-\u9fff]{2,4}$/  //中国人姓名  2-4中文
+//		var reg=/^[1-9]{4,11}$/          //QQ号  5-12位数字
+//		var reg=/^[1-9]\d{5}$/    //邮编验证  六位数字，第一位不为0
+//		var reg=/^xxx\.zip\\xxx\.rar\\xxx\.tar$/
+//		var reg=/^\w+\.(zip|rar|tar)$/
+//		var reg = /^\w+@\w+(\.\w+)+$/;    //电子邮件 (@符号前后使用单词字符即可)  szm@163.com.cn
+//		var reg = /^(13|15|18|17)\d{9}$/;    //手机号 1 3|5|8|7
+//		var reg = /^[1-9]{17}[0-9xX]$/;	//身份证 （18位  考虑最后一位可能为x）
+//		var reg = /^\D\w{5,17}$/;////账户名只能使用数字字母下划线，不能数字开头，长度在6--18之间
+		var content=$("txt").value;
+		if(reg.test(content)){
+			alert("合法");
+		}else{
+			alert("不合法");
+		}
+	}
+</script>

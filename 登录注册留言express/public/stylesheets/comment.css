@@ -1,0 +1,60 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ul li{
+	list-style: none;
+}
+body{
+	background: #fff9f9;
+}
+a{
+	text-decoration: none;
+	color: deeppink;
+}
+a:hover{
+	color: skyblue;
+}
+form{
+	width: 600px;
+	height: 170px;
+	padding: 10px;
+	box-shadow: 0 0 8px #ccc;
+	margin: 100px auto;
+	background: #fff;
+	border-radius: 20px;
+	text-align: center;
+}
+label{
+	color: lightpink;
+	font-weight: bold;
+	font-family: "微软雅黑";
+	font-size: 25px;
+}
+input[type=submit]{
+	display: block;
+	width: 80px;
+	height: 40px;
+	border: none;
+	border: 1px solid lightpink;
+	background: #fff;
+	color: lightpink;
+	border-radius: 10px;
+	margin: 20px auto;
+	outline: none;
+}
+input[type=submit]:hover{
+	background: lightpink;
+	color: #FFF;
+}
+input[name=content]{
+	display: block;
+	width: 500px;
+	height: 40px;
+	border: none;
+	border: 1px solid lightpink;
+	outline: none;
+	border-radius: 10px;
+	margin: 20px auto;
+	padding-left: 20px;
+}

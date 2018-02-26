@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>DOM操作</title>	
+	</head>
+	<style>		
+	</style>
+	<body>
+		标题：<input type="text" id="topic_name" size=60/><br>
+		内容：<input type="text" id="topic_content" size=60/><br>
+		作者：<input type="text" id="author" size=60/><br>
+		<button id="saveBtn">保存</button>
+		<table id="tab" border=1>
+			<tr>
+				<th>ID</th><th>帖子名称</th><th>内容预览</th><th>发布时间</th><th>作者</th><th>操作</th>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td name="option"><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+			<tr>
+				<td>25</td><td class="title">ABC</td><td>xxxxxxxx....</td><td>2016-04-15</td><td>LCE</td><td><a name="detail" href="#">详细信息</a> <a class="delbtn" href="javascript:;">删除</a></td>
+			</tr>
+		<table>
+	</body>	
+</html>
+<script> 
+	function $(id){
+		return document.getElementById(id);
+	}
+	$("saveBtn").onclick = function(){
+		var title = $("topic_name").value;
+		var content = $("topic_content").value;
+		var author = $("author").value;
+		// 利用克隆  克隆吗某一行，然后再修改内容
+		var oTr = $("tab").children[0].children[1].cloneNode(true); //深度克隆，样式+内容
+		oTr.children[0].innerHTML = Math.floor(Math.random()*100);
+		oTr.children[1].innerHTML = title;
+		oTr.children[2].innerHTML = content;
+		var now = new Date();
+		var month = now.getMonth()<10?"0"+(now.getMonth()+1) : (now.getMonth()+1);
+		oTr.children[3].innerHTML = now.getFullYear()+"-" + month + "-" + now.getDate();
+		oTr.children[4].innerHTML = author;
+		$("tab").children[0].appendChild(oTr); //添在表格的最后边，如果没有children[0]，添在表格的前边。
+		
+	}
+	
+	//点击单元格变成文本框输入
+	$("tab").onclick = function(evt){  
+		var e = evt || event ;
+		var target = e.target ||e.srcElement;
+		if( target.nodeName =="TD" ){
+			var opt = document.createElement("input"); //创建一个input标签
+			opt.type = "text";  //设置文本框的类型
+			opt.value = target.innerHTML;  //把原来列的值给文本框
+			target.innerHTML = "";  //把原来列的值置空
+			target.appendChild(opt); //将文本框添加列
+			
+			opt.focus();   //文本框获取焦点方法
+			
+			opt.onblur = function(){//失去焦点时  保存信息
+				
+				target.innerHTML = opt.value;//将文本框的内容 赋值给 td
+			}
+		}
+	}
+	//删除
+	$("tab").addEventListener("click",function(evt){
+		var e = evt || event ;
+		var target = e.target ||e.srcElement;
+		if( target.className == "delbtn" ){ //通过类名找到“删除”a标签
+			if( confirm("确定要删除么？") ){
+				//父元素.removeChild(子元素)
+				target.parentNode.parentNode.remove(); //一种新的删除方法  
+			}
+		}
+	})
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

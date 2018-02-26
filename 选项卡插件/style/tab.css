@@ -1,0 +1,65 @@
+.tab {
+	width: 520px;
+}
+.tab .tab-menu {
+	height: 28px;
+	background: #fafafa;
+	border-bottom: 1px solid #d9d9d9;
+}
+.tab .tab-menu:after{
+	content: '';
+	display: block;
+	clear:both;
+}
+.tab .tab-menu li {
+	float: left;
+	width: 82px;
+	line-height: 26px;
+	text-align: center;
+	border-top: 2px solid #fafafa;
+	border-left: 1px solid #fafafa;
+	border-right: 1px solid #fafafa;
+	cursor: pointer;
+}
+.tab .tab-menu .tab-active {
+	background: #fff;
+	border-top-color: #2c99ff;
+	border-left-color: #d9d9d9;
+	border-right-color: #d9d9d9;
+	border-bottom: 1px solid #fff;
+}
+.tab .tab-body {
+	padding: 10px 0;
+	overflow: hidden;
+	background: #fff;
+}
+.tab .tab-body .tab-item {
+	display: none;
+}
+.tab .tab-body .tab-active {
+	display: block;
+}
+.tab .tab-body .tab-img{
+	float: left;
+}
+.tab .tab-body .tab-title {
+	margin-left: 264px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #dfdfdf;
+}
+.tab .tab-body .tab-activity {
+	margin-left: 264px;
+	padding-top: 10px;
+	overflow: hidden;
+}
+.tab .tab-body .tab-activity li{
+	float: left;
+	width: 128px;
+	line-height: 18px;
+}
+.tab .tab-body .tab-title a, .tab .tab-body .tab-activity a{
+	color: #000;
+}
+.tab .tab-body .tab-activity a {
+	text-decoration: underline;
+}

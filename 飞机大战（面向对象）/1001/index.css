@@ -1,0 +1,76 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+html,body {
+	height: 100%;
+	overflow: hidden;
+}
+#box {
+	margin: 0 auto;
+	width: 480px;
+	height: 100%;
+	overflow: hidden;
+	background: url(images/bg.jpg) left top repeat-y;
+}
+#level {
+	margin: 100px auto;
+	width: 300px;
+}
+#level li {
+	margin-top: 20px;
+	color: #fff;
+	font-size: 30px;
+	line-height: 100px;
+	text-align: center;
+	background: green;
+	border-radius: 8px;
+	box-shadow: 0 0 8px #000, 0 0 4px yellow inset;
+	cursor: pointer;
+}
+.logo {
+	position: absolute;
+	top: -100px;
+	left: 50%;
+	margin-left: -160px;
+	width: 320px;
+}
+.loading {
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -100px;
+	width: 200px;
+}
+.me {
+	position: absolute;
+	width: 98px;
+	height: 122px;
+}
+.bullet {
+	position: absolute;
+	width: 7px;
+	height: 18px;
+	background: url(images/bullet.png) left top no-repeat;
+}
+.s-enemy {
+	position: absolute;
+	width: 59px;
+	height: 36px;
+	background: url(images/plane1.png) no-repeat;
+}
+.m-enemy {
+	position: absolute;
+	width: 70px;
+	height: 92px;
+	background: url(images/plane2.png) no-repeat;
+}
+.l-enemy {
+	position: absolute;
+	width: 165px;
+	height: 256px;
+	background: url(images/plane3.png) no-repeat;
+}

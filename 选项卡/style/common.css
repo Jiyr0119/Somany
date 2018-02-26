@@ -1,0 +1,18 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style:none;
+}
+img{
+	vertical-align: bottom
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+body{
+	font-size: 12px;
+	background: #555555;
+}

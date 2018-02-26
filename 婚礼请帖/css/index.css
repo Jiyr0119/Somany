@@ -1,0 +1,489 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+@keyframes jiantou_ani{
+	from{
+		transform: translateY(80px);
+		opacity: 1;
+	}
+	to{
+		transform: translateY(-10px);
+		opacity: 0.3;
+	}
+}
+.uparrow{
+	position: absolute;
+	left: 50%;
+	bottom:80px ;
+	margin-left: -21px;
+	z-index: 100;
+	animation: jiantou_ani 2s infinite;
+	display: none;
+}
+.select-btn{
+	display: block;
+	width: 80px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 28px;
+	text-decoration: none;
+	text-align: center;
+	border-radius:50% ;
+	background: rgba(255,255,255,.5);
+	color: #636862;
+}
+@keyframes cir_animate{
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+.map{
+	position: absolute;
+	top: 30px;
+	right: 20px;
+	animation: cir_animate 4s infinite linear;
+	z-index: 2;
+}
+.sure{
+	position: absolute;
+	top: 150px;
+	right: 20px;
+	z-index: 2;
+	animation: cir_animate 4s infinite linear;
+}
+.music{
+	display: block;
+	width: 70px;
+	height: 70px;;
+	border-radius:50% ;
+	background: url(../imgs/music.png);
+	background-size:70px 70px ;
+	background-color: rgba(255,255,255,.5);
+	position: absolute;
+	bottom: 50px;
+	right: 30px;
+	z-index: 2;
+	animation: cir_animate 4s infinite linear;
+}
+.swiper-container{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: #fff;
+}
+.mask{
+	width: 100%;
+	height: 100%;
+	background:linear-gradient(to bottom, rgba(0,0,0,.1) 50%,rgba(255,255,255,.9) 100%);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/*--------------------------------one------------------------*/
+.index-bg{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	left: 0;
+	top:0;
+}
+.index-day{
+	position: absolute;
+	bottom: 180px;
+	left: 50%;
+	margin-left: -336px;
+}
+.index-bottom{
+	position: absolute;
+	bottom: 130px;
+	left: 50%;
+	margin-left: -250px;
+}
+/*--------------------------------two------------------------*/
+.second-page{
+	background: #fff;
+}
+.sec-title{
+	font-size: 50px;
+	line-height: 262px;
+	text-align: center;
+	color:#774000;
+}
+.sec-imgbox{
+	height: 388px;
+	line-height: 388px;
+	background: #763F00;
+	text-align: center;
+	position: relative;
+}
+.sec-img{
+	width: 100%;
+	height: 370px;
+	position: absolute;
+	top:9px;
+	left:0;
+}
+.sec-bottom{
+	position: absolute;
+	bottom: 400px;
+	left: 50%;
+	margin-left: -250px;
+}
+.sec-info{
+	width: 100%;
+	height: 280px;
+	position: absolute;
+	bottom: 100px;
+	left: 0;
+	font-size: 26px;
+	text-align: center;
+	overflow: hidden;
+	color:#6A3805;
+}
+.loversname{
+	line-height: 44px;
+}
+.bridename{
+	float: left;
+	margin-left: 120px;
+}
+.groomname{
+	float: right;
+	margin-right: 120px;
+}
+.weddingtime{
+	line-height: 54px;
+}
+.address{
+	line-height: 40px;
+    margin-top: 5px;
+}
+.welcome{
+	font-size: 34px;
+	line-height: 36px;
+	margin-top: 50px;
+	font-weight: 600;
+}
+/*--------------------------------three------------------------*/
+.thr-bg{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	left: 0;
+	top:0;
+}
+.thr-pic{
+	display: block;
+	width: 280px;
+	height: 280px;
+	border: 1px solid #6A3805;
+	border-radius: 50%;
+	position: absolute;
+	top: 500px;
+	left: 150px;
+}
+.thr-left{
+	width: 230px;
+    height: 150px;
+    position: absolute;
+    top: 653px;
+    left: 41px;
+}
+.thr-right{
+	width: 230px;
+    height: 150px;
+    position: absolute;
+    top: 653px;
+    left: 300px;
+}
+.thr-txt{
+	width: 100%;
+	text-align: center;
+	line-height: 80px;
+	font-size: 34px;
+	color: #7F5B2B;
+	position: absolute;
+	bottom: 80px;
+	left: 0;
+}
+/*--------------------------------four------------------------*/
+.four-bg{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	left: 0;
+	top:0;
+}
+.four-pic{
+	display: block;
+	width: 280px;
+	height: 280px;
+	border: 1px solid #6A3805;
+	border-radius: 50%;
+	position: absolute;
+	top: 500px;
+	left: 150px;
+}
+.four-left{
+	width: 230px;
+    height: 150px;
+    position: absolute;
+    top: 653px;
+    left: 41px;
+}
+.four-right{
+	width: 230px;
+    height: 150px;
+    position: absolute;
+    top: 653px;
+    left: 300px;
+}
+.four-txt{
+	width: 100%;
+	text-align: center;
+	line-height: 80px;
+	font-size: 34px;
+	color: #7F5B2B;
+	position: absolute;
+	bottom: 80px;
+	left: 0;
+}
+/*--------------------------------five------------------------*/
+.five-pic{
+	width: 100%;
+	height: 520px;
+	position: absolute;
+	top:0;
+	left:0;
+}
+.five-txt{
+    width: 100%;
+    text-align: center;
+    line-height: 48px;
+    font-size: 34px;
+    color: #7F5B2B;
+    position: absolute;
+    top: 550px;
+    left: 0;
+}
+.five-left{
+	position: absolute;
+	top: 550px;
+	left: 35px;
+}
+.five-right{
+	position: absolute;
+	top: 550px;
+	right: 35px;
+}
+.five-bottmo01{
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	left:60px;
+	bottom:50px ;
+}
+.five-bottom02{
+	width: 250px;
+	height: 250px;
+	position: absolute;
+	right:60px;
+	bottom:50px ;
+}
+/*--------------------------------six------------------------*/
+.six-imgbox{
+	width: 100%;
+	height: 710px;
+	padding: 0 4px;
+}
+.six-pic{
+	float: left;
+	width: 200px;
+	height: 200px;
+	margin-left: 8px;
+	margin-bottom: 8px;
+	list-style: none;
+}
+.six-img{
+	width: 200px;
+	height: 200px;
+}
+.six-introduce{
+	position: absolute;
+    bottom: 380px;
+    right: 0px;
+}
+.six-txt{
+    width: 100%;
+    text-align: right;
+    line-height: 48px;
+    font-size: 34px;
+    color: #7F5B2B;
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+}
+/*--------------------------------seven------------------------*/
+.seven-txt{
+	float: left;
+	width: 60px;
+	height: 370px;
+	text-align: center;
+	font-size: 34px;
+    color: #7F5B2B;
+    padding:200px 70px;
+}
+.seven-pic{
+	width: 450px;
+	height: 770px;
+	position: absolute;
+}
+.zimu{
+	margin-bottom: 70px;
+}
+.seven-tel{
+	width: 100%;
+	height: 300px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+.contact{
+	float: left;
+	text-align: center;
+	width: 400px;
+	font-size: 38px;
+    color: #855219;
+    padding-left: 20px;
+    padding-top: 100px;
+}
+.english{
+	font-size: 30px;
+}
+.phone{
+	width: 150px;
+	height: 66px;
+	line-height: 66px;
+	border-radius: 10px;
+	background: url(../imgs/phone.png) no-repeat left center;
+	background-size:44px 44px ;
+	background-color: #855219 ;
+	color: #fff;
+	font-size: 30px;
+	padding-left: 50px;
+}
+.boyphone{
+	position: absolute;
+	bottom: 180px;
+	right: 20px;
+}
+.girlphone{
+	position: absolute;
+	bottom: 90px;
+	right: 20px;
+}
+/*--------------------------------eight------------------------*/
+.eight-page{
+	overflow: hidden;
+}
+.eight-pic{
+	width: 100%;
+	height: 720px;
+}
+.eight-welcome{
+	line-height: 60px;
+	text-align: center;
+	font-size: 38px;
+	color: #855219;
+}
+.wel-english{
+	line-height: 40px;
+	text-align: center;
+	font-size: 28px;
+	color: #855219;
+}
+.eight-bottom{
+	position: absolute;
+	bottom: 240px;
+	left: 50%;
+	margin-left: -250px;
+}
+.eight-txt{
+	width: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    color: #7F5B2B;
+    position: absolute;
+    bottom: 56px;
+    right: 20px;
+}
+/*-------------------------------nine------------------------*/
+.info-page{
+	width: 100%;
+	text-align: center;
+}
+.back{
+	line-height: 330px;
+	text-align: center;
+	font-size: 44px;
+    color: #7F5B2B;	
+}
+.info-bottom{
+	position: absolute;
+	top: 204px;
+	left: 50%;
+	margin-left: -250px;
+	margin-bottom: 30px;
+}
+.backinfo{
+	width:580px ;
+	height: 88px;
+	font-size: 30px;
+	color: #855219;
+	border: 1px solid #bbafaf;
+	border-radius: 10px;
+	outline: none;
+	margin-bottom: 10px;
+	padding-left: 10px;
+}
+.comment{
+	height: 200px;
+}
+.backinfo::-webkit-input-placeholder { 
+	font-family: "微软雅黑";
+	font-size: 30px;
+	color:#b6b6b6; 
+}
+/*.comment::-webkit-input-placeholder { 
+	font-size: 34px;
+}*/
+#submit{
+	background: #6A3805;
+	color: #fff;
+}
+/*--------------------------------map------------------------*/
+#container{
+	width: 640px;
+	height: 700px;
+	background: pink;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	z-index: 10;
+}
+.closeBtn{
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+}

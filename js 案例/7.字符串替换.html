@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	查找内容：<input type="text" id="b1"/>
+	替换为：<input type="text" id="b2"/>
+	<input type="button" id="btn" value="替换"/>
+	<p id="con">
+         做梦的穷人
+　　每天上午11点，都会有一辆耀眼的汽车穿过纽约市的中心公园。车里除了司机，还有一位主人-无人不晓的百万富翁。
+　　这位百万富翁发现：每天上午都有一位衣着褴褛的人坐在公园的凳子上死死盯着他住的酒店。有一天，百万富翁对这个人产生了极大的兴趣，他让司机停下车并走到那人的面前说：“请原谅，我不明白你为什么每天上午都盯着我住的酒店看。”
+　　“先生，”穷人说，“我没钱、没家、没住宅，只得睡在这条长凳上，不过，每天晚上我都梦到住进了那座酒店。”
+　　百万富翁觉得很有趣，于是对那人说：“今天晚上我就让你如愿以偿。我为你在酒店订一间最好的房间，并支付一个月房费。”
+　　几天后，百万富翁路过穷人住的酒店套房，想顺便问一问他是否觉得很满意。然而，他发现那人已搬出了酒店，重新回到公园的凳子上了。
+　　百万富翁来到公园，询问穷人为什么要这样做时，穷人回答道：“一旦我睡在凳子上，我就梦见我睡在那座豪华的酒店，真是妙不可言；一旦我睡在酒店里，我就梦见我又回到了冷冰冰的凳子上，这梦真是可怕极了，以致完全影响了我的睡眠！”
+　　大道理：患得患失是最要不得的，不要让毫无根据的想象破坏美好的一切，也不要靠着美好的不存在的东西生存。不管现实如何，积极面对自己所拥有的一切才是最佳的选择。
+	</p>
+	</body>
+</html>
+<script>
+	var oOldcon=document.getElementById("b1");
+	var oNewcon=document.getElementById("b2");
+	var oTxt=document.getElementById("con");
+	var oBtn=document.getElementById("btn");
+	oBtn.onclick=function(){
+		var oldTxt=oOldcon.value;
+		var newTxt=oNewcon.value;
+		var str=oTxt.innerHTML;
+		oTxt.innerHTML=str.replace(oldTxt,"<span style='color:red'>"+newTxt+"</span>");
+	}
+</script>

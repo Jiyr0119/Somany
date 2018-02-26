@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打印表格</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	function fnPrintTable(m,n){
+		document.write('<table border="1" width="500" height="30" cellspacing="0" cellpadding="0">')
+			for(var row=1;row<=m;row++){
+				document.write('<tr height="30">')
+					for(var col=1;col<=n;col++){
+						document.write('<td></td>')
+					}
+				document.write('</tr>')
+			}
+		document.write('</table>')
+	}
+	fnPrintTable(5,4)
+</script>

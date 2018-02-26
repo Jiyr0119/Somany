@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//算术运算符
+	console.log( 7*"8" );   // 56   纯数字的字符串自动转为数值型，再执行
+	console.log( 7*"8a" );   //NaN  非数字字符串 ，不能自动转换，
+	console.log( 7*true );   // 7   true =1
+	console.log( 7*false );   // 0   flase=0
+	
+	console.log( 100 + "100" ); // 100100   +号表连接
+	 
+	console.log( 10 + "2" - "1" );   // 101   102-1=101   +号表连接， “1”纯数字自动转为字数值型
+	
+//	//++
+	var i = 2;
+	i = 3 + i;
+	i++; //  等价 i = i + 1
+	++i;
+	++i;
+	console.log(i);  // 8
+	
+	var i = 2,j;
+	j = i++; //变量j 的作用是用来接收某个表达式的值  i=3  j=2  i++(先赋值再运算)
+	j = ++i; //  i=4  j=4     ++i(先运算后复制)
+	console.log(i); // 4
+	console.log(j); // 4
+	
+	var k=3;
+	k=k++ + ++k + k++ + k   // 3 + 5 + 5 + 6  =19 
+	console.log(k);
+	
+	
+	//关系运算符
+	console.log( "abc" > "acd" );   //false  字符串可以比较，一个一个比，按照Ascall码比  b<c
+	console.log( "34" > 23 );  // true "34"纯数字字符串自动转换为数值，做比较
+	console.log( "a34" > 23 ); // false "a34"不是纯数字字符串，不能自动转换，不能正常比较的，都为false
+	console.log( 100 == "100" );// true  ==  比较数值是否相等
+	console.log( 100 != "100" );// false
+	console.log( 100 === "100" );// false   === 先比较类型是否相同，再比较类型
+	console.log( 100 !== "100" );//true   
+
+	//逻辑表达式
+	console.log( 3>4 && 5<6 ); //false   &&同真则真，一假则假
+	console.log( 3<4 && 5<6 );//true  
+	console.log( 3==4 && 5==6 ); //false
+	console.log( 3==3 || 4>5 );   //true   &&同假则假，一真则真
+	console.log( !(3>4) || 4>5  );//true   ！ 取反
+	
+	var i = 2001;
+	console.log( i%2==0 && i%5==0 ); // false  表达式1为假
+	console.log( !(i%2) && !(i%5) ); // false  表达式2为假
+	console.log( !(i%4)  && i%100  ||  !(i%400) ); //false  表达式2为假
+	
+	console.log( 7<8  ?  45 : 78 );  //45   条件表达式？ 真：表达式1 假：表达式2 
+	console.log( i%2==0 ? "偶数" : "奇数" ); // 奇数
+	
+	
+	
+	
+	var name = "张三丰",age=90,addr;
+	console.log("姓名:"+name );
+	console.log("年龄:"+age);
+	var brr;
+	var arr=[];
+	function fn(){}
+	//alert("姓名："+name+"年龄:"+age);
+	
+	//测试变量的类型
+	//  typeof值得类型(6种)：
+	//string[字符] number[数值] boolean[布尔] object[对象] undefined[未定义] function[函数]
+	//  null  Array 都是对象 object
+	console.log( typeof name );  // string
+	console.log( typeof age );   //Number
+	console.log( typeof addr );  // undefined
+	console.log( typeof null ); //object
+	console.log( typeof brr ); // undefined  没有给值 
+	console.log( typeof arr ); //  object
+	console.log( typeof fn ); // function  函数
+</script>

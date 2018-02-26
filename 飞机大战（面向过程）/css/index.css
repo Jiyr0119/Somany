@@ -1,0 +1,68 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+html,body{
+	height:100%;
+}
+#box{
+	width: 480px;
+	height: 100%;
+	background:url(../images/bg.jpg),repeat-y top left;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#level{
+	width: 204px;
+	margin:200px auto;
+}
+#level li{
+	width: 200px;
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+	font-size: 22px;
+	color: #FBFBFB;
+	background: #FFA500;
+	border: 2px solid #CCCCCC;
+	border-radius: 10px;
+	box-shadow: 0 0 10px #DCDCDC;
+	margin:20px auto;
+	cursor: pointer;
+}
+.logo{
+	width: 350px;
+	position: absolute;
+	left:50%;
+	top:-200px;
+	margin-left: -175px;
+}
+.oLoad{
+	width: 200px;
+	position: absolute;
+	left: 50%;
+	top: 500px;
+	margin-left: -100px;
+}
+.myplane{
+	width:98px ;
+	height: 122px;
+	background: url(../images/me.png) no-repeat;
+	position: absolute;
+	bottom: -122px;   /* 可以通过计算获得,此处为了写入场动画*/
+}
+.bullet{
+	width: 7px;
+	height: 18px;
+	background: url(../images/bullet.png) no-repeat;
+	position: absolute;
+}
+.oEnemy{
+	width: 59px;
+	height: 36px;
+	background: url(../images/plane1.png) no-repeat;
+	position: absolute;
+}

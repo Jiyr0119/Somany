@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../common.js"></script>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 350px;
+			height: 350px;
+			border: 1px solid black;
+			margin: 100px;
+			position: relative;
+		}
+		#small{
+			position: relative;
+		}
+		#big{
+			width: 400px;
+			height:400px;
+			border: 1px solid black;
+			position: absolute;
+			top: 0;
+			left: 360px;
+			overflow: hidden;
+			display: none;
+		}
+		#mask{
+			width: 175px;
+			height: 175px;
+			background: pink;
+			opacity: .3;
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		#bigImg{
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+	<body>
+		<div id="box">
+			<div id="small">
+				<img src="../img/001.jpg" alt="" id="smallImg" />
+				<div id="mask"></div>
+			</div>
+			<div id="big">
+				<img src="../img/0001.jpg" id="bigImg" alt="" />
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	// 鼠标移入移除效果
+	$("small").onmouseover = function(){
+		$("big").style.display = "block";
+		$("mask").style.display = "block";
+	}
+	$("small").onmouseout = function(){
+		$("big").style.display = "none";
+		$("mask").style.display = "none";
+	}
+	
+	
+	$("small").onmousemove=function(evt){
+		
+		//实现遮罩层在小图框框内移动
+		var e=evt||event;
+		var x=e.pageX-$("box").offsetLeft-($("mask").offsetWidth/2)//offsetLeft: 距离它最近的上一级的父元素的左偏移(它爸和它爷)
+		var y=e.pageY-$("box").offsetTop-($("mask").offsetHeight/2) // 写small不行，small父盒子有定位，相当于0.写box
+		var maxW=$("box").offsetWidth-$("mask").offsetWidth;
+		var maxH=$("box").offsetHeight-$("mask").offsetHeight;
+		x= x<=0? 0:(x>maxW? maxW:x);
+		y= y<=0? 0:(y>maxH? maxH:y);
+		$("mask").style.left=x+"px";
+		$("mask").style.top=y+"px";
+		
+
+		// 大图的left / mask left  =  大图的宽度 / 小图宽度       (移动是成比例的)
+		// 遮罩层和大图显示区也成比例。          =大图显示区/ mask    (该程序暂未实现,不要改图，该其他的)
+		var bigImgX= x * $("bigImg").offsetWidth / $("smallImg").offsetWidth;
+		var bigImgY= y * $("bigImg").offsetHeight / $("smallImg").offsetHeight;
+	
+		//改变大图的位置 ，和鼠标移动的方向正好相反，改变符号
+		$("bigImg").style.left= -bigImgX + "px";
+		$("bigImg").style.top= -bigImgY + "px";
+	}
+</script>

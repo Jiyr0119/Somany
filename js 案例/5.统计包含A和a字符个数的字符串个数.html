@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	var count=0;
+	var arr=["Apple","orange","banana","red","blue"]
+	for(var i=0;i<arr.length;i++){
+		var res1=arr[i].indexOf("a");
+		var res2=arr[i].indexOf("A");
+		if(res1!=-1||res2!=-1){
+			count++;
+		}
+	}
+	document.write(count);
+</script>

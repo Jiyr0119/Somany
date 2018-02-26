@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var a=10;     //全局变量a   在函数体外部定义的全局变量
+    function fun(){
+
+        a="global"; // 隐式全局变量，在函数体内部没有用var定义的变量
+    }
+    console.log(a);  10  //函数未调用
+
+    -----------------------------------
+
+    var a;    //全局
+
+    function fun(){
+
+        a="global";   //全局
+
+    }
+
+    fun();
+
+    console.log(a);  //global  函数调用了。全部变量a的值改变为global  
+
+    -----------------------------------
+
+    var a=1;   //全局
+
+    function fun(){
+
+        a=b=2; // 全局
+
+    }
+
+    fun();
+
+    alert(a);  //  2
+
+    alert(b);  //  2
+
+     ------------------------------------
+
+    function aa(){
+        var  b ;  // 局部变量b 未给值
+       
+        a = 10;  //全局变量  （隐式）       
+       
+        var b = 20;  // 局部变量 ，在函数体内部通过var定义的变量
+       
+        b = 20;  
+
+    }
+
+    aa();
+
+    console.log(a);  //  10  
+
+    console.log(b);  //  undefined  报错  局部变量，报错未定义
+
+    -----------------------
+
+
+    几道经典的面试题：
+
+    f1();
+
+    console.log(c); 9
+
+    console.log(b); 9
+
+    console.log(a); 9
+
+    function f1(){
+
+        var a=b=c=9;   // a 局部    b c 全局  Var只用在了a上 
+ 
+        console.log(a);  9 
+
+        console.log(b);  9 
+
+        console.log(c);  9
+
+    }
+
+    -------------------------
+
+var num=10;    //全局变量
+
+fun(); 
+
+function fun(){
+                                             //  var num;
+    console.log(num);  //该出会发生变量提升<==> console.log(num)  undefine;
+                                             //  num=10;
+    var num=20;  
+
+}
+</script>
+   
+

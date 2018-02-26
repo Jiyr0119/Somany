@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery.min.js"></script>
+		
+		<style>
+			#shopbtn{
+				font-size: 30px;
+				padding: 5px 10px;
+				border: 1px solid red;
+				margin-bottom: 20px;
+				cursor: pointer;
+			}
+			p,button{
+				margin-left:80px;
+			}
+			img{
+				margin-left:40px ;
+			} 
+		</style>
+		<script src="cookie.js"></script>
+	</head>
+	<body>
+		
+		<div class="shopinfo">
+			<!--<img src="img/1.jpg" alt="" />
+			<p>小米1</p>
+			<p>333</p>
+			<button>购买</button>-->
+		</div>
+		
+			
+	</body>
+</html>
+<script type="text/javascript">
+	 //获取路径   
+	var str = location.href; 
+	 // http://127.0.0.1/day13/shopCart1708/page.html?id=shop06&cid=classify001
+	var arr = str.split("?")[1];//id=shop06&cid=classify001
+	    arr = arr.split("&");//["id=shop06","cid=classify001"]
+	var id = arr[0].split("=")[1];
+	var cid = arr[1].split("=")[1];
+	
+	$.ajax({
+		type:"get",
+		url:"http://127.0.0.1/day13/shopCart1708/data.json",
+		success:function(msg){
+			//console.log( msg[cid].list );
+			for( var i in msg[cid].list ){
+				if( id == msg[cid].list[i].id ){ //满足这个条件的对象就是 要显示的详情信息对象
+					//console.log( msg[cid].list[i] );
+					info = msg[cid].list[i];
+					$(".shopinfo").html(`<img src="img/${info.src}" alt="" />
+											<p>${info.name}</p>
+											<p>${info.price}</p>
+											<button>购买</button>`);
+				 	break;
+				}
+			}
+		}
+	});
+</script>

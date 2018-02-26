@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>日期</title>
+</head>
+<body>
+	距离商品下架:<p id="p1"></p>
+</body>
+</html>
+<script>
+	//商品下架时间
+	//计算距离这个时间还剩多少小时多少分多少秒
+	setInterval(function(){
+		var d=new Date();  // 当前的电脑时间
+		var myDate=new Date("2017-05-13 00:00:00") //设置的时间 
+		function diff(start,end){   //求时间差
+			return Math.abs(( start.getTime()-end.getTime())/1000 )
+		}
+		var res=diff(d,myDate);
+		var day=parseInt(res/3600/24);
+		var hour=parseInt((res-day*24*3600)/3600);
+		var min=parseInt((res-day*24*3600-hour*3600)/60);
+		var sec=parseInt(res-day*24*3600-hour*3600-min*60);
+		document.getElementById("p1").innerHTML=day+"天"+hour+"小时"+min+"分钟"+sec+"秒";
+	},1000)
+</script>

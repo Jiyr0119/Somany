@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			.box{
+				width: 500px;
+				height: 750px;
+				background: #FFFAE8;
+				margin: 5px auto;
+				border-radius: 20px;
+				overflow: hidden;
+			}
+			.content-box{
+				
+				position: relative;
+				overflow: hidden;
+			}
+			.content-txt{
+				padding: 20px 25px;
+				/*font-size: 18px;*/
+				color: #615a5a;
+				height: 590px;
+				overflow: hidden;
+			}
+			.size-box{
+				width: 500px;
+				height: 60px;
+				line-height: 60px;
+				/*background: yellow;*/
+				position: fixed;
+				left: 50%;
+				margin-left: -250px;
+				bottom: 105px;
+			}
+			.size-btn{
+				width: 40px;
+				height: 40px;
+				outline: none;
+				font-size:20px ;
+				color:#4e4b4b;
+				background: #eee;
+				border: 1px solid #ddd;
+				border-radius:8px ;
+				box-shadow: 0 0 3px #ccc;	
+			}
+			.size-txt{
+				width: 40px;
+				height: 40px;
+				font-size: 20px;
+				margin-left: 180px;
+			}
+			#dec{
+				margin-left: 15px;
+			}
+			#add{
+				margin-left: 180px;
+			}
+			.bgcolor-box{
+				width: 500px;
+				height: 50px;
+				position: fixed;
+				left: 50%;
+				margin-left: -250px;
+				border-radius:7px ;
+				bottom: 55px;
+				overflow: hidden;
+				/*background: rgba(0,0,0,.1);*/	
+			}
+			.color-item{
+				float: left;
+				width: 40px;
+				height: 40px;
+				margin-top: 5px;
+				margin-left:50px ;
+				border-radius:50% ;
+			}
+			.color-item:nth-child(1){background: #FFFAE8;}
+			.color-item:nth-child(2){background: #fbc0d4;}
+			.color-item:nth-child(3){background: #bddab9;}
+			.color-item:nth-child(4){background: #BED9EE;}
+			.color-item:nth-child(5){background: #f5f59a;}
+			.active{
+				border: 1px solid #dedede;
+    			box-shadow: 0 0 7px #e2dcdc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="content-box">
+				<p class="content-txt">
+					做梦的穷人
+					每天上午11点，都会有一辆耀眼的汽车穿过纽约市的中心公园。车里除了司机，还有一位主人-无人不晓的百万富翁。
+					这位百万富翁发现：每天上午都有一位衣着褴褛的人坐在公园的凳子上死死盯着他住的酒店。有一天，百万富翁对这个人产生了极大的兴趣，他让司机停下车并走到那人的面前说：“请原谅，我不明白你为什么每天上午都盯着我住的酒店看。”
+					“先生，”穷人说，“我没钱、没家、没住宅，只得睡在这条长凳上，不过，每天晚上我都梦到住进了那座酒店。”
+					百万富翁觉得很有趣，于是对那人说：“今天晚上我就让你如愿以偿。我为你在酒店订一间最好的房间，并支付一个月房费。”
+					几天后，百万富翁路过穷人住的酒店套房，想顺便问一问他是否觉得很满意。然而，他发现那人已搬出了酒店，重新回到公园的凳子上了。
+					百万富翁来到公园，询问穷人为什么要这样做时，穷人回答道：“一旦我睡在凳子上，我就梦见我睡在那座豪华的酒店，真是妙不可言；一旦我睡在酒店里，我就梦见我又回到了冷冰冰的凳子上，这梦真是可怕极了，以致完全影响了我的睡眠！”
+					大道理：患得患失是最要不得的，不要让毫无根据的想象破坏美好的一切，也不要靠着美好的不存在的东西生存。不管现实如何，积极面对自己所拥有的一切才是最佳的选择。
+				</p>
+				<div class="size-box">
+					<input type="button" id="dec" value="A-" class="size-btn"/>
+					<span class="size-txt">18</span>
+					<input type="button" id="add" value="A+"class="size-btn"/>	
+				</div>
+				<ul class="bgcolor-box">
+					<li class="js-color-item color-item active" name="0"></li>
+					<li class="js-color-item color-item" name="1"></li>
+					<li class="js-color-item color-item" name="2"></li>
+					<li class="js-color-item color-item" name="3"></li>
+					<li class="js-color-item color-item" name="4"></li>	
+				</ul>
+			</div>
+		</div>
+		<script src="jquery-1.8.3.js"></script>
+		<script type="text/javascript">
+			function Page() {
+				this.boxElem = $(".box");
+				this.addBtnElem = $("#add");
+				this.decBtnElem = $("#dec");
+				this.conTxtElem = $(".content-txt");
+				this.fontSizeTxt = $(".size-txt");
+				this.conFontSize = $(".content-txt").css("font-size");
+				this.fontNum = parseInt(this.conFontSize);
+				this.bgColorElem = $(".bgcolor-box");
+			};
+			
+			$.extend(Page.prototype, {
+				init: function() {
+					this.resetForData();
+					this.bindEvents();
+				},
+				
+				bindEvents: function() {
+					this.addBtnElem.on("click",$.proxy(this.handelAddFontSize,this));
+					this.decBtnElem.on("click",$.proxy(this.handelDecFontSize,this));
+					this.bgColorElem.on("click",$.proxy(this.handelBgColor,this));
+				},
+				
+				handelAddFontSize: function() {
+					this.fontNum ++;
+					$(".content-txt").css({"font-size": this.fontNum});
+					$(".size-txt").text(this.fontNum);
+					
+					try{
+						window.localStorage.fontSize = this.fontNum;
+					}catch(e){}
+				},
+				
+				handelDecFontSize: function() {
+					this.fontNum --;
+					$(".content-txt").css({"font-size":this.fontNum});
+					$(".size-txt").text(this.fontNum);
+					
+					try{
+						window.localStorage.fontSize = this.fontNum;
+					}catch(e){}
+				},
+				
+				handelBgColor: function(e) {
+					if($(e.target).attr("class").indexOf("js-color-item") > -1){
+						$(".bgcolor-box>li").removeClass("active");
+						$(e.target).addClass("active");
+						$(".box").css({"background":$(e.target).css("background")});
+						
+						try{
+							window.localStorage.bgColor = $(e.target).css("background");
+							window.localStorage.index = $(e.target).attr("name");
+						}catch(e){}	
+					}else{
+						alert("请选择合适的颜色")
+					}
+				},
+				
+				resetForData: function() {
+					try{
+						this.conTxtElem.css({"font-size": localStorage.fontSize + 'px'});
+						this.boxElem.css({"background":localStorage.bgColor});
+						this.fontSizeTxt.text(localStorage.fontSize);
+						
+						$(".bgcolor-box>li").removeClass("active").eq(localStorage.index).addClass("active");
+						
+					}catch(e) {}
+				}
+			});
+			
+			var page = new Page();
+			page.init()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body bgcolor="#000">
+	</body>
+</html>
+<script>
+	//  页面打开，启动定时器  动态创建不同大小不同位置的星星（宽高一样）
+	//  点击某个星星，星星消失
+	function getRand(min,max){
+		return Math.floor(Math.random()*(max-min+1)-min);
+	}
+	window.onload=function(){
+		var timer=setInterval(function(){
+			var oImg=document.createElement("img");
+			oImg.src="img/star.gif"
+			document.body.appendChild(oImg);
+			var w=getRand(5,80);
+			oImg.style.cssText="width:"+w+"px;height:"+w+"px;position:absolute;left:"+getRand(0,1000)+"px;top:"+getRand(0,1000)+"px;"
+			oImg.onclick=function(){
+			document.body.removeChild(oImg);
+		}
+		},1000)
+		
+	}
+		
+
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+       .ad{
+       	width: 450px;
+       	height: 300px;
+       	background: url(images/9.jpg) no-repeat;
+       	position: fixed;
+		right: 0;
+		bottom: 0;
+		display: none;
+       }
+       .ad span{
+       	width: 40px;
+       	height: 40px;
+       	background: url(images/h.jpg) no-repeat;
+       	position: absolute;
+		top:0;
+		right: 0;
+		cursor: pointer;
+       }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="ad">
+        <span></span>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+	
+	$(function(){
+		$(".ad").slideDown(1000).slideUp(1000).fadeIn(1000);
+		$("span").click(function(){
+			$(".ad").fadeOut(1000);
+		});		
+	});
+	
+//	$(function(){
+//		$(".ad").slideDown(1000)
+//				.slideUp(1000)
+//				.fadeIn(1000)
+//				
+//		$("span").click(function(){
+//			$(".ad").fadeOut(1000)
+//		})
+//	})
+</script>

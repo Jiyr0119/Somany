@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            margin:100px;
+            position: relative;
+        }
+        .content {
+            height: auto;
+            padding: 5px 18px 5px 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .scroll {
+            width: 18px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #eee;
+        }
+        .bar {
+            width: 100%;
+            height: 100px;
+            background-color: red;
+            cursor: pointer;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"><!--内容可视区-->
+    <div id="content" class="content" ><!--内容区-->
+     你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的
+	 小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你
+	 是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小
+	 苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果 
+	 你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的
+	 小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你
+	 是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小
+	 苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果 
+	 你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的
+	 小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你
+	 是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小
+	 苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果 
+	 你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的
+	 小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你
+	 是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小
+	 苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果 
+	 你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的
+	 小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你
+	 是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小
+	 苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果你是我的小苹果 
+    </div>
+    <div id="scroll" class="scroll"><!--滚动条所在区域-->
+        <div id="bar" class="bar"></div><!--滚动条-->
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+	function $(id){
+		return document.getElementById(id);
+	}
+	//思路 ：点击滚动条  产生向下拖拽事件
+	// 当滚动条拖拽时，内容向相反的方向走   ( 放大镜原理)
+	//鼠标按下+拖拽
+ 	var maxH=$("scroll").offsetHeight - $("bar").offsetHeight;
+ 	$("bar").onmousedown=function(evt){
+ 	 	var e=evt||event;
+ 	 	var rey=e.offsetY||e.layerY;
+ 	 	document.onmousemove=function(evt){
+   	 		var e=evt||event;
+   	 		window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();
+ 	 		var y=e.pageY-rey-$("box").offsetTop-$("scroll").offsetTop;
+			var y=y<0? 0:(y>=maxH? maxH:y);
+ 	 		$("bar").style.top=y+"px";	
+ 	 		$("content").style.top=-y+"px";
+		}	
+ 	 }
+ 	//鼠标抬起
+ 	document.onmouseup=function(){
+ 	 	document.onmousemove=null;
+ 	} 
+</script>

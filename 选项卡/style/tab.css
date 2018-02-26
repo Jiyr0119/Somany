@@ -1,0 +1,77 @@
+.tab{
+	width: 520px;
+}
+.tab .tab-menu{
+	height: 28px;
+	background: #FAFAFA;
+	border-bottom: 1px solid #D9D9D9;
+}
+.tab .tab-menu:after{
+	content: '';
+	display: block;
+	clear:both;
+}
+.tab .tab-menu li{
+	width: 83px;
+	line-height: 26px;  /*一个li的高度一共29*/
+	text-align: center;
+	border-top: 2px solid #FAFAFA;
+	border-left: 1px solid #FAFAFA;
+	border-right: 1px solid #FAFAFA;
+	cursor: pointer;
+	float: left;
+}
+.tab .tab-menu .tab-active{
+	background: #fff;
+	border-top: 2px solid #2C99FF;
+	border-left: 1px solid #D9D9D9;
+	border-right: 1px solid #D9D9D9;
+	border-bottom: 1px solid #ffffff;
+}
+.tab #tab-body{
+	padding: 10px 0;
+	background: #fff;
+	overflow: hidden;
+}
+.tab #tab-body .tab-item{
+	display: none;
+}
+.tab #tab-body .tab-active {
+	display: block;
+}
+.tab #tab-body img{
+	float: left;
+}
+.tab #tab-body .tab-title{
+	margin-left: 264px;
+	padding-bottom:10px ;
+	border-bottom: 1px solid #DFDFDF;
+	line-height: 20px;
+}
+.tab #tab-body .tab-content{
+	margin-left: 264px;
+	padding-top: 10px;
+	overflow: hidden;
+}
+.tab #tab-body .tab-content li{
+	float: left;
+	width: 123px;
+	line-height: 18px;
+	background: url(../images/icon.png) no-repeat center left;
+	padding-left: 5px;
+}
+.tab #tab-body .tab-content a{
+	text-decoration: underline;
+}
+.tab #tab-footer{
+	background: #9E9E9E;
+	height: 28px;
+	line-height: 28px;
+}
+.tab #tab-footer a{
+	float: left;
+	width: 104px;
+	color: #fff;
+	text-align: center;
+	background:url(../images/bg.png) no-repeat center right;
+}

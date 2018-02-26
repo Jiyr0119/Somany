@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#container{
+			height:170px;
+			width:500px;
+			background:teal;
+			margin:200px;
+			overflow:hidden;
+			position:relative;
+		}
+		#box{
+			position:absolute;
+			left:0;
+			top:0;
+		}
+		ul{
+			list-style:none;	
+		}
+	</style>
+	<body>
+		<div id="container">
+			<div id="box">
+				<ul>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油11</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了...</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了累了...</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了...</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油10</li>
+				</ul>
+				<ul>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油11</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了...</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了累了...</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了...</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油1</li>
+					<li>好好学习天天向上，困了累了想想mm，想想sg，加油10</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	//  布局很关键，写两个一样的ul 利用视觉效果 实现无缝
+	var oBox=document.getElementById("box")
+	var timer = setInterval(autoPlay,10);
+	var num = 0;
+	function autoPlay(){
+		num--;
+		var height=oBox.children[0].offsetHeight;  //一个ul的高度 ，
+		if( num < -height){
+			num=0
+		}
+		oBox.style.top = num + "px";
+	}
+</script>

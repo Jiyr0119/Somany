@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="main.css" />
+		<script src="jquery.min.js"></script>
+		<script src="cookie.js"></script>
+		<style>
+			.header{
+				height: 40px;
+				width: 900px;
+				margin: 0 auto 50px;
+			}
+		</style>
+	</head>
+	<body>		 
+		<div class="header">
+			<span id="s"><a href="login.html">登录 / 注册</a></span>
+			<span id="s1">
+				
+			</span>
+		</div>
+		<div class="nav clearfix">
+			<!--<span>小米手机</span>-->
+		</div>
+		
+		<ul class="shoplist clearfix">
+			<!--<li>
+				<a href="page.html">
+					<img src="img/1.jpg" alt="" />
+					<p>小米1</p>
+					<p>890</p>
+				</a>
+				<button>加入购物车</button>
+			</li>-->
+		</ul>	
+	</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		
+		$.ajax({
+			url:"http://127.0.0.1/day13/shopCart1708/data.json",
+			type:"get",
+			success:function(msg){
+				var str = "";
+				for(var i in msg){
+					//console.log(msg[i].name)
+					$(".nav").append(`<span>${msg[i].name}</span>`);
+					
+					for(var j in msg[i].list){
+						var info = msg[i].list[j];//数组中的每一个对象
+						str += `<li>
+									<a href="page.html?id=${info.id}&cid=${i}">
+										<img src="img/${info.src}" alt="" />
+										<p>${info.name}</p>
+										<p>${info.price}</p>
+									</a>
+									<span style="display:none" data-id=${info.id} data-name=${info.name} data-price=${info.price} data-src=${info.src}></span>
+									<button>加入购物车</button>
+								</li>`;
+					}
+				}
+				$(".shoplist").html(str);
+				
+			}
+		})
+		
+	})
+	
+	//购物车的添加功能
+	
+	$(".shoplist").on("click","button",function(){
+		var arr = [];//用来存放所有购买的商品
+		var proInfo = {
+			"name":$(this).prev().data("name"),  //data()方法获取自定义属性值的
+			"price":$(this).prev().data("price"), 
+			"src":$(this).prev().data("src"), 
+			"id":$(this).prev().data("id"),
+			"count": 1   //记录这个商品在购物车中的个数
+		}
+		var flag = true;//当开关的值为true时   可以向数组中push新数据  
+		//当再次点击 或 刷新页面时，会将数组清空，此时cookie的数据也会被清除，要解决数组信息不会被覆盖的问题
+		// 解决办法：  在没将新点击的商品存入到数组之前  可以先将cookie的信息取出来 存到数组中  
+		oldCookie = getCookie("shoplist");//取出cookie中的数据
+		if( oldCookie.length!=0 ){//判断cookie中是否有数据，如果有数据，先将原cookie的数据存入到数组中 
+			arr = oldCookie;	//先将原cookie的数据存入到数组中 
+			for(var i = 0 ; i < arr.length ; i++){ //遍历arr   判断 当前点击的对象 在arr中是否存在  如果存在，让 count+1
+				if( proInfo.id == arr[i].id && proInfo.name == arr[i].name ){
+					arr[i].count++;
+					flag = false;
+					break;
+				}
+			}
+		}
+		if( flag ){ //当开关的值为true时   可以向数组中push新数据  
+			arr.push( proInfo );
+		}
+		//将数组信息存入到cookie中
+		setCookie("shoplist", JSON.stringify(arr) );
+		
+		if( !confirm("继续购物，点击确定;点击取消 跳转到购物车页面") ){
+			location.href = "shopcar.html";
+		}
+		console.log( document.cookie );
+	})
+</script>

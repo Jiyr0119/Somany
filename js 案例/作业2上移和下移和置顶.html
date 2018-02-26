@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		tr{
+			text-align:right;
+		}
+	</style>
+	<body>
+		<table border = 1 width = 500>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>
+					<input type="button" value="上移" name="up"/>
+					<input type="button" value="下移" name="down"/>
+					<input type="button" value="置顶" name="top1"/>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>
+					<input type="button" value="上移" name="up"/>
+					<input type="button" value="下移" name="down"/>
+					<input type="button" value="置顶" name="top1"/>
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>
+					<input type="button" value="上移" name="up"/>
+					<input type="button" value="下移" name="down"/>
+					<input type="button" value="置顶" name="top1"/>
+				</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>
+					<input type="button" value="上移" name="up"/>
+					<input type="button" value="下移" name="down"/>
+					<input type="button" value="置顶" name="top1"/>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
+<script>
+	var upBtn = document.getElementsByName("up");
+	var downBtn = document.getElementsByName("down");
+	var topBtn = document.getElementsByName("top1");
+	//上移
+	for(var i = 0 ; i < upBtn.length ; i++){
+		upBtn[i].onclick = function(){
+			if(this.parentNode.parentNode.previousElementSibling){//判断当前操作按钮所在行的前一个兄弟节点是否存在
+				this.parentNode.parentNode.parentNode.insertBefore(this.parentNode.parentNode , this.parentNode.parentNode.previousElementSibling );
+			}
+		}
+	}
+	//下移
+	for(var i = 0 ; i < downBtn.length ; i++){
+		downBtn[i].onclick = function(){
+			if(this.parentNode.parentNode.nextElementSibling){
+				this.parentNode.parentNode.parentNode.insertBefore(this.parentNode.parentNode,this.parentNode.parentNode.nextElementSibling.nextElementSibling);
+			}
+		}
+	}
+</script>

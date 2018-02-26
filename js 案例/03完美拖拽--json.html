@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>完美拖拽</title>
+	<style type="text/css">
+		html,body{overflow:hidden;}
+		body,div,h2,p{margin:0;padding:0;}
+		body{color:#fff;background:#000;font:12px/2 Arial;}
+		p{padding:0 10px;margin-top:10px;}
+		span{color:#ff0;padding-left:5px;}
+		#box{position:absolute;width:300px;height:150px;background:#333;border:2px solid #ccc;top:50%;left:50%;margin:-75px 0 0 -150px;}
+		#box h2{height:25px;cursor:move;background:#222;border-bottom:2px solid #ccc;text-align:right;padding:0 10px;}
+		#box h2 a{color:#fff;font:12px/25px Arial;text-decoration:none;outline:none;}
+	</style>
+	<script type="text/javascript">
+	
+	
+	</script>
+</head>
+<body>
+	<div id="box" style="margin-left: 0px; margin-top: 0px; left: 533px; top: 231px;">
+	    <h2><a href="javascript:;" id="a1">点击回放拖动轨迹</a></h2>
+	    <p><strong>Drag:</strong><span>false</span></p>
+	    <p><strong>offsetTop:</strong><span>231</span></p>
+	    <p><strong>offsetLeft:</strong><span>533</span></p>
+	</div>
+</body></html>
+<script>
+ 	var oDiv = document.getElementsByTagName("div")[0];
+ 	var btn = document.getElementById("a1");
+ 	var positionArr = [];//存放移动时的x和y坐标
+	//鼠标按下oDiv
+	oDiv.onmousedown = function(evt){
+		var e = evt || event;
+		var rex = e.offsetX || e.layerX;
+		var rey = e.offsetY || e.layerY;
+		//让盒子在body文档上移动
+		document.onmousemove = function(evt){
+			var e = evt || event;
+			window.getSelection?window.getSelection().removeAllRanges() : document.selection.empty()
+			
+			
+			var x = e.pageX - rex ;
+			var y = e.pageY - rey ;
+			var maxL = window.innerWidth - oDiv.offsetWidth;
+			var maxT = window.innerHeight - oDiv.offsetHeight;
+			
+			x = x<=0 ? 0 : ( x>= maxL ? maxL : x );
+			y = y<=0 ? 0 : ( y>= maxT ? maxT : y );
+			//改变盒子的left 和 top值
+			oDiv.style.left = x + "px";
+			oDiv.style.top = y + "px";
+			positionArr.push({"left2":oDiv.offsetLeft,"top2":oDiv.offsetTop});
+			
+		}
+	}
+	//鼠标抬起取消拖拽
+	document.onmouseup = function(){
+		document.onmousemove = null;
+	} 
+	//轨迹回放
+	btn.onclick = function(){
+		var index = positionArr.length - 1;
+		timer = setInterval(function(){
+			
+			oDiv.style.left = positionArr[index].left2 + "px";
+			oDiv.style.top = positionArr[index].top2 + "px";
+			index--;
+			if( index == 0 ){
+				clearInterval(timer);
+				positionArr = [];
+			}
+		},10)
+		
+	}
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../common.js"></script>
+	</head> 
+	<body>
+		<input type="button" value="发送短信倒计时" id="btn"/>
+	</body>
+</html>
+<script>
+	$("btn").onclick = function(){
+		var count = 5;
+		var timer = setInterval(function(){
+			if(count>0){
+				$("btn").value = "剩余"+count+"秒";
+				count--;
+				$("btn").disabled = true;
+			}else{
+				clearInterval(timer);
+				$("btn").value = "发送短信倒计时";
+				$("btn").disabled = false;
+			}
+		},1000)
+	}
+</script>

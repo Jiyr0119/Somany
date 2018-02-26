@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图插件</title>
+	<link rel="stylesheet" href="style/common.css">
+	<link rel="stylesheet" href="style/carousel.css">
+	<script src="js/common.js"></script>
+	<script src="js/carousel.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			new Carousel($('first-carousel'));
+			new Carousel($('second-carousel'));
+		}
+	</script>
+</head>
+<body>
+	<div class="carousel" id="first-carousel">
+		<ul class="carousel-img-list">
+			<li><a href="javascript:;"><img src="images/1.jpg"></a></li>
+			<li><a href="javascript:;"><img src="images/2.jpg"></a></li>
+			<li><a href="javascript:;"><img src="images/3.jpg"></a></li>
+			<li><a href="javascript:;"><img src="images/4.jpg"></a></li>
+		</ul>
+		<div class="carousel-btn-list">
+			<a href="javascript:;" class="carousel-active"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+		</div>
+		<div class="carousel-direction-btn">
+			<a href="javascript:;" class="carousel-left-btn"><</a>
+			<a href="javascript:;" class="carousel-right-btn">></a>
+		</div>
+	</div>
+
+	<div class="carousel" id="second-carousel">
+		<ul class="carousel-img-list">
+			<li><a href="javascript:;"><img src="images/1.jpg"></a></li>
+			<li><a href="javascript:;"><img src="images/2.jpg"></a></li>
+			<li><a href="javascript:;"><img src="images/3.jpg"></a></li>
+			<li><a href="javascript:;"><img src="images/4.jpg"></a></li>
+		</ul>
+		<div class="carousel-btn-list">
+			<a href="javascript:;" class="carousel-active"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+		</div>
+		<div class="carousel-direction-btn">
+			<a href="javascript:;" class="carousel-left-btn"><</a>
+			<a href="javascript:;" class="carousel-right-btn">></a>
+		</div>
+	</div>
+</body>
+</html>

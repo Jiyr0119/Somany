@@ -1,0 +1,99 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.video-box{
+	width: 500px;
+	height: 430px;
+	margin:30px auto;
+	position: relative;
+}
+#video{
+	background: #ececec;
+}
+input[type=range] {
+    -webkit-appearance: none;
+    width: 300px;
+    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}    
+input[type=range]::-webkit-slider-runnable-track {
+    height: 3px;
+    border-radius: 10px; /*将轨道设为圆角的*/
+    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+    background: #ccc; 
+    border-radius: 50%; /*外观设置为圆形*/
+    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
+}
+.select-box{
+	position: absolute;
+	left: -1px;
+	bottom: 104px;
+	width: 500px;
+	height: 30px;
+	border:1px solid #fff;
+	border-top:none ;
+	background: linear-gradient(to bottom,#ECECEC,#D6D6D6)
+}
+#play{
+	float: left;
+	width: 30px;
+	height: 30px;
+	border:1px solid #d2cdcd;
+	border-radius:5px ;
+	outline:none;
+	background: url(../imgs/play.png) no-repeat; 
+	background-size: 30px 30px;
+	margin-left:9px;
+}
+.timer{
+	float: left;
+	line-height: 30px;
+	font-size: 12px;
+	margin-left: 10px;
+}
+#process{
+	float: left;
+	width: 300px;
+	height: 10px;
+	margin-left:3px ;
+	margin-top: 10px;
+}
+#volume{
+	display: none;
+ 	position: absolute;
+    width: 100px;
+    height: 10px;
+    bottom: 74px;
+    right: 5px;
+    transform: rotate(-90deg);
+}
+#volume-btn{
+	float: left;
+	width: 20px;
+	height: 20px;
+	border: none;
+	border-radius:5px ;
+	outline:none;
+	background: url(../imgs/volum.png) no-repeat; 
+	background-size: 20px 20px;
+	margin-left:9px;
+	margin-top: 4px;
+}
+#fullScreen{
+	float: left;
+	margin-top: 3px;
+    margin-left: 4px;
+}

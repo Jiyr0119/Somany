@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+		.top img{
+			height:168px;
+		}
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+		
+    </style>
+</head>
+<body>
+	<div class="top" id="top">
+	    <img src="../img/top.png" alt=""/>
+	</div>
+	<div class="nav" id="Q-nav">
+	    <img src="../img/nav.png" alt=""/>
+	</div>
+	<div class="main">
+	    <img src="../img/main.png" alt=""/>
+	</div>
+	<div id="rocket" style="display:block;">
+	    <img src="../img/huojian.png" alt=""/>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	 var h=168;
+	 var g=250;
+	 var oNav=document.getElementById("Q-nav")
+	 var oAdv=document.getElementById("adv")
+	 var oRoc=document.getElementById("rocket")
+	 window.onscroll=function(){
+	 	//获取滚动条滚动高度的兼容写法
+	 	var stop=document.body.scrollTop||document.documentElement.scrollTop;
+	 	// 导航栏吸顶效果
+	 	if(stop>h){
+	 		oNav.style.position="fixed";
+	 		oNav.style.top="0";
+	 	}else{
+	 		oNav.style.position="";
+	 	}
+	 	//小火箭出现
+	 	if(stop>0){
+	 		oRoc.style.display="block";
+	 		oRoc.style.position="fixed";
+	 		oRoc.style.top="300px";
+	 		oRoc.style.left="0";
+	 	}
+	 	//手动回到顶部时，小火箭消失
+	 	if(stop==0){
+	 		oRoc.style.display="none";
+	 	}
+	 	//点击小火箭时的事件 
+		oRoc.onclick=function(){
+	 		document.body.scrollTop=0;
+	 		oRoc.style.display="none";
+	 	}
+	 }
+</script>

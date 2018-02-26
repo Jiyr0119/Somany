@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src='../common.js'></script>
+	</head>
+	<style>
+		#div1{
+			position:absolute;
+			left:0;
+			top:0;
+			width:100px;
+			height:100px;
+			border:1px solid red;
+		}
+	</style>
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>
+<script>
+	document.oncontextmenu = function(evt){
+		var e = evt || event;
+		//e.preventDefault();
+		//e.returnValue=false;
+		//alert();
+		
+		/*if( e.preventDefault ){
+			e.preventDefault();
+			alert("高版本");
+		}else{
+			
+			alert("低版本");
+			e.returnValue=false;
+		}*/
+		e.preventDefault?e.preventDefault() : e.returnValue = false;
+		
+		var x = e.pageX-51;
+		var y = e.pageY-51;
+		$("div1").style.cssText = "left:"+x+"px;top:"+y+"px";
+	}
+</script>

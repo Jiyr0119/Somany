@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹出层的插件</title>
+	<link rel="stylesheet" href="common.css">
+	<link rel="stylesheet" href="popup.css">
+	<script type="text/javascript" src="popup.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			let oBtn = document.getElementById('btn');
+
+			oBtn.onclick = function () {
+				new Popup().create({
+					title: '标题1',
+					content: '内容1',
+				});
+			}
+		}
+	</script>
+</head>
+<body>
+<button id="btn">显示弹出框</button>
+</body>
+</html>

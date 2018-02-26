@@ -1,0 +1,13 @@
+<div class="header">
+	<img src="<%= avatar %>" class="avatar"/>
+	<div class="log-area">
+		<div class="log-item"><a href="/comment">发表留言</a></div>
+		<% if(login) {%>
+		<div class="log-item"><a href="/login/logout">退出</a></div>
+		<div class="log-item"><a href="/login/addAvatar">上传头像</a></div>
+		<% }else { %>
+		<div class="log-item"><a href="/login">登录</a></div>
+		<div class="log-item"><a href="/register">注册</a></div>
+		<% } %>
+	</div>
+</div>

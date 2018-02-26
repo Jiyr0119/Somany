@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+
+<body>
+	<div id="div">
+		<img src="img/0.png" />
+		<img src="img/8.png" />
+		时
+		<img src="img/1.png" />
+		<img src="img/5.png" />
+		分
+		<img src="img/0.png" />
+		<img src="img/9.png" />
+		秒
+	</div>
+</body>
+</html>
+<script>
+
+    //	方法一:实时获取时间通过数学计算（取整取余）把时分秒分别取出来赋值到数组
+	setInterval(function(){
+		var now = new Date();    //获取现在时间
+		var h = now.getHours();   //分别获得时分秒
+		var m = now.getMinutes();
+		var s = now.getSeconds();
+		var arr  = [                             //把时分秒存放在数组
+						parseInt(h/10),h%10,	  
+						parseInt(m/10),m%10,	
+						parseInt(s/10),s%10,	
+				   ]
+		var oImgs = document.getElementsByTagName("img");  //获取图片
+		for(var i = 0 ; i < oImgs.length ; i++){  
+			//定时器+for循环控制图片地址的改变
+			oImgs[i].src = "img/"+arr[i]+".png";  
+		}
+	},1000)
+
+
+
+	// //	方法二： 通过字符串和数组的转换（datetostring/ split），把时分秒分别存进数组
+	// function dateToString(d){    
+	// 	var h=d.getHours()<10?"0"+d.getHours():d.getHours();
+	// 	var m=d.getMinutes()<10?"0"+d.getMinutes():d.getMinutes();
+	// 	var s=d.getSeconds()<10?"0"+d.getSeconds():d.getSeconds();
+	// 	return ""+h+m+s   
+	// }
+	// setInterval(function(){
+	// 	var d=new Date();         // 实时时间的获取
+	// 	var str=dateToString(d);   //把当前时间变为字符串  20:35:50--->203550
+	// 	var newArr=str.split("")// 把这个字符串变为数组:[2,1,4,0,5,0]
+	// 	var oImgs = document.getElementsByTagName("img");  //获取图片
+	// 	for(var i = 0 ; i < oImgs.length ; i++){  
+	// 		//定时器+for循环控制图片地址的改变
+	// 		oImgs[i].src = "../img/"+newArr[i]+".png";  
+	// 	}
+	// },1000)
+	
+</script>

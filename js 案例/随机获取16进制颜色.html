@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机获取颜色值</title>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	function getRand(min,max){
+		return Math.floor(Math.random()*(max-min+1)-min);
+	}
+	function getColor(){
+		var r=getRand(0,255).toString(16);
+		var g=getRand(0,255).toString(16);
+		var b=getRand(0,255).toString(16);
+		return (r.length<2?"0"+r:r)+(g.length<2?"0"+g:g)+(b.length<2?"0"+b:b);
+	}
+
+
+
+
+	//颜色盘：把随机获取的颜色的字符串也输出
+	// //function getRand(min,max){
+	// 	return Math.floor(Math.random()*(max-min+1)-min);
+	// }
+	// function getColor(){
+	// 	var r=getRand(0,255).toString(16);
+	// 	var g=getRand(0,255).toString(16);
+	// 	var b=getRand(0,255).toString(16);
+	// 	return (r.length>2?"0"+r:r)+(g.length>2?"0"+g:g)+(b.length>2?"0"+b:b)
+	// }
+	// function $(id){
+	// 	return document.getElementById(id)
+	// }
+	// $("btn").onclick=function(){
+	// 	$("divBox").style.backgroundColor="#"+getColor();
+	// 	$("divBox").innerHTML="#"+getColor();
+	// }
+</script>

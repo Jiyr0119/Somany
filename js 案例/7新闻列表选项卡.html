@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration:none;
+}
+.box{
+	width:300px;
+	height:400px;
+	margin:200px auto;
+	overflow:hidden;
+}
+.nav_list{
+	width:40px;
+	height:400px;
+	float:left
+}
+.nav_list p{
+    width: 37px;
+    height: 78px;
+    font-size: 19px;
+    background: #d2d7d1;
+    color: black;
+    text-align: center;
+    float: left;
+    margin-bottom: 5px;
+    padding-top: 17px;
+}
+.content{
+	width:257px;
+	height:400px;
+	float:left;
+	display:none;
+}
+.content a{
+   	display: block;
+    line-height: 39px;
+    color: #080a91;
+    font-size: 18px;
+    margin-left: 13px;
+}
+.content a:hover{
+	text-decoration:underline;
+	color:red;
+}
+.nav_list p.on{background:orange;}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="nav_list">
+			<p>热销</p>
+			<p>新盘</p>
+			<p>家装</p>
+			<p>二手房</p>
+		</div>
+		<div class="content" style="display:block;">  
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+			<a href="#">城外城家居盛会</a>
+		</div>
+
+
+		<div class="content">
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+			<a href="#">小空间装出大时尚</a>
+		</div>
+
+
+		<div class="content">
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+			<a href="#">四种厨房布局利弊</a>
+		</div>
+
+
+		<div class="content">
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+			<a href="#">五大装修遗憾如何补救</a>
+		</div>
+	</div>
+	
+</body>
+</html>
+<script>
+	var oPs=document.getElementsByTagName("p");
+	var oDivs=document.getElementsByClassName("content")
+	for(var i=0;i<oPs.length;i++){
+		oPs[i].index=i;
+		oPs[i].onmouseover=function(){
+			for(var j=0;j<oPs.length;j++){
+				oPs[j].className="";
+				oDivs[j].style.display="none";
+			}
+			this.className="on";
+			oDivs[this.index].style.display="block";
+		}
+	}
+//	var oAs=document.getElementsByClassName("nav")  //通过操作标签获取所有的a(以集合形式存在)
+//	var oDivs=document.getElementsByClassName("content") // 通过操作类名获取所有div(以集合存在)
+//	//通过循环，为每一个标题添加onclick事件
+//	for(var i=0;i<oAs.length;i++){   //外层的循环为每个标题添加单击事件
+//		oAs[i].onclick=function(){  
+//			for(var j=0;j<oAs.length;j++){  
+//				if(this==oAs[j]){    //判断当前发生点击的a ,它显示，其它隐藏
+//					this.className="on";
+//					oDivs[j].style.display="block";
+//				}else{
+//					oAs[j].className="";
+//					oDivs[j].style.display="none";
+//				}
+//			}
+//		}
+//	}
+</script>

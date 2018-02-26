@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	</head>
+	<body>
+		<div class="slide-box">
+			<ul class="slide-img-list">
+				<li><a href="#"><img src="images/1.jpg"/></a></li>
+				<li><a href="#"><img src="images/2.jpg"/></a></li>
+				<li><a href="#"><img src="images/3.jpg"/></a></li>
+				<li><a href="#"><img src="images/4.jpg"/></a></li>
+			</ul>
+			<div class="slide-btn-list">
+				<a href="" class="slide-active"></a>
+				<a href=""></a>
+				<a href=""></a>
+				<a href=""></a>
+			</div>
+			<div class="slide-direction-btn">
+				<a href="#" class="slide-left"><</a>
+				<a href="#" class="slide-right">></a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		/*
+		思路：
+			定时器/右箭头：（先运动后切）
+		    1.当图片盒子 ul 的 margin-top 值移动到 -340时，(一张图片的高度)animate 结束
+		 	2.动画结束后 ，将 margin-top的值重新置0  （第二张就变成了第一张）
+		 			        将ul 中的第一个li添加到 ul 的结尾处（实现无缝）
+		 			        
+		 	左箭头：(先切后运动)
+		 	1.先将最后一个li放到ul的最前面 
+		 	     再将ul的margin-top 设置为 -340px 
+		 	2. animate 运动 ，margin-top 运动到0
+		*/
+
+		$(function(){
+			//启动定时器   ，自动轮播
+			var iTimer = setInterval(autoPlay,2000)
+			var index = 0;
+			function autoPlay(){
+				//按钮的运动
+				index++;
+				if(index == $(".slide-btn-list a").size()){
+					index = 0
+				}
+				//操作当前，其他的都为空
+				$(".slide-btn-list a").eq(index).addClass("slide-active").siblings().removeClass("slide-active");
+			
+				//图片的运动
+				$("ul").animate({"top":-340},1500,function(){
+					$("ul").css("top",0)
+						   .find("li:first")
+						   .appendTo($("ul"));
+				})
+			}
+			
+			//鼠标划入划出事件
+			$(".slide-box").hover(function(){
+				clearInterval(iTimer);
+				$(".slide-direction-btn").show();
+				
+			},function(){
+				$(".slide-direction-btn").hide();
+				iTimer = setInterval(autoPlay,2000); 
+			});
+			
+			//右箭头鼠标点击事件
+			$(".slide-right").click(function(){
+					autoPlay();
+			});
+			
+			//左箭头鼠标点击事件
+			var flag = true;
+			$(".slide-left").click(function(){
+				if(flag){
+					//找到最后一个li放到最前面
+					$("ul li:last").prependTo( $("ul") );
+					$("ul").css("top","-340px");
+					$("ul").animate({"top":0},1500,function(){
+						flag = true;
+					})
+				}
+				flag = false;
+			});
+
+		});
+		
+		
+	</script>
+</html>

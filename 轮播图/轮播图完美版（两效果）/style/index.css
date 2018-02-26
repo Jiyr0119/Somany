@@ -1,0 +1,64 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+#box {
+	position: relative;
+	margin: 50px auto;
+	width: 590px;
+	height: 340px;
+	overflow: hidden;
+}
+#list {
+	position: relative;
+	width: 2360px;
+}
+#list li {
+	float: left;
+}
+#direction-btn {
+	display: none;
+}
+#direction-btn a{
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	width: 30px;
+	height: 60px;
+	font-size: 30px;
+	line-height: 60px;
+	text-align: center;
+	background: rgba(0, 0, 0, .4);
+	color: #fff;
+}
+#left-btn {
+	left: 0;
+}
+#right-btn {
+	right: 0;
+}
+#btn-list {
+	position: absolute;
+	right: 30px;
+	bottom: 20px;
+}
+#btn-list a{
+	margin: 0 5px;
+	float: left;
+	width: 16px;
+	height: 16px;
+	background: rgba(0, 0, 0, .4);
+	border: 2px solid rgba(255, 255, 255, .3);
+	border-radius: 50%;
+	transition: all .5s;
+}
+#btn-list .active {
+	background: rgba(255, 255, 255, .3);
+	border-color: rgba(0, 0, 0, .4);
+}

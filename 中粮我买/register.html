@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dist/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="dist/css/register.css"/>
+		<script type="text/javascript" src="dist/js/jquery-1.8.3.js"></script>
+		<script src="dist/js/require.js" data-main="dist/js/register"></script>
+		<script type="text/javascript" src="dist/js/login.js"></script>
+	</head>
+	<body>
+		<div id="content">
+			<div id="head"></div>
+			<div id="main">
+				<div class="main_bg">
+					<a href=""><img src="images/register_bg.jpg"/></a>
+				</div>
+				<div class="main_box">
+					<div class="outside">
+						<div class="inside">
+							<div class="reg_title">注册我买网
+								<p class="reg_title_txt">已有我买账号
+								<a href="javascript:;" class="login">登录</a></p>
+							</div>
+							<div class="reg_content">
+								<form action="" method="post">
+									<div class="reg_mail">
+										<input type="text" name="" id="phone" value="" placeholder="手机号码" />	
+										<span class="warn">手机格式不正确</span>
+									</div>
+									<div class="reg_username">
+										<input type="text" name="" id="uname" value="" placeholder="用户名" />
+										<span class="warn">用户名不合法()</span>
+									</div>
+									<div class="reg_password">
+										<input type="password" name="" id="upwd" value="" placeholder="密码" />
+										<span class="warn">密码长度为6-13位</span>
+									</div>
+									<div class="reg_confirm">
+										<input type="password" name="" id="surepwd" value="" placeholder="确认密码" />
+										<span class="warn">密码不一致</span>
+										<div class="reg_line">
+											<div class="reg_look"><a href="javascript:;" class="change">看不清换一张</a></div>
+										</div>
+									</div>
+									<div class="reg_code">
+										<input type="text" name="" id="code" value="" placeholder="验证码" />
+										<span class="warn">验证码错误</span>
+										<a href="" class="yzm">FEDC</a>
+									</div>
+									<div class="reg_promise">
+										<div class="promise_con">
+											<input type="checkbox" name="" id="promise" value=""/>
+											<a href="">我已阅读并同意《我买网网上商城服务条款》</a>
+										</div>
+									</div>
+									<div class="reg_btn">
+										<input type="button" name="" id="reg" value="注册" />
+										<a href="">我有邀请码</a>
+									</div>
+								</form>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="foot"></div>
+			<div id="s_reg"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$("#head").load("common.html header")
+		$("#foot").load("common.html footer")
+	</script>
+</html>

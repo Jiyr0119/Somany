@@ -1,0 +1,72 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+ul li{
+	list-style: none;
+}
+body{
+	background: #fff9f9;
+}
+a{
+	text-decoration: none;
+	color: deeppink;
+}
+a:hover{
+	color: skyblue;
+}
+.header{
+	height: 50px;
+	width: 100%;
+	background: papayawhip;
+	border-bottom: 2px solid #ECE8DE;
+}
+.avatar{
+	position: absolute;
+	left: 30px;
+}
+.log-area{
+	position: absolute;
+	right: 0;
+	line-height: 50px;
+	margin-right: 30px;
+}
+.log-item{
+	float: right;
+	margin-right: 20px;
+}
+.comment{
+	margin: 20px;
+	padding:10px 20px 20px;
+}
+.comment-list{
+	box-shadow: 0 0 8px pink;
+	margin-top: 15px;
+	line-height: 30px;
+	padding:5px 20px;
+	border-radius: 15px;
+	color: #333;
+	background: #fff;
+}
+.page{
+	padding-left: 50px;
+}
+.page-num{
+	float: left;
+	width: 20px;
+	height: 20px;
+	border: 1px solid lightpink;
+	margin-right: 10px;
+	text-align: center;
+	vertical-align: middle;
+	background: #fff;
+}
+.page-num a{
+	color: lightpink;
+}
+.page-num:hover{
+	background: lightpink;
+}
+.page-num:hover a{
+	color: #FFFFFF;
+}

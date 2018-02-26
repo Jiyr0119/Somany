@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+	<div class="video-box"> 
+		<video id="video" width="500" height="300" poster="imgs/jay.jpg">
+			<source src="imgs/love.mp4" type="video/mp4" ></source>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+		<div class="select-box">
+			<button id="play"></button>
+			<div style="width: 386px; float: left;">
+				<label class="preTimer timer">00:13</label>
+				<input type="range" id="process" value="1" min="0" max="1" step="0.02"/>
+				<label class="shengTimer timer">02:04</label>
+			</div>
+			<button id="volume-btn"></button>
+			<input type="range" id="volume" value="1" min="0" max="1" step="0.01" />
+			<button id="fullScreen">全屏</button>
+		</div>	
+	</div>
+	<script src="js/jquery-1.8.3.js"></script>
+	<script src="js/range.js"></script>
+	<script src="js/index.js"></script>
+	</body>
+</html>

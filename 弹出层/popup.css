@@ -1,0 +1,39 @@
+.popup {
+	position: absolute;
+	top: 200px;
+	left: 50%;
+	margin-left: -151px;
+	width: 300px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-shadow: 0 0 8px #ccc;
+}
+.popup h3 {
+	padding: 0 8px;
+	line-height: 32px;
+	border-bottom: 1px solid #ddd;
+}
+.popup h3 a{
+	float: right;
+	color: #000;
+}
+.popup h3 a:hover {
+	text-decoration: underline;
+}
+.popup .popup-content {
+	padding: 8px;
+	border-bottom: 1px solid #ddd;
+}
+.popup .popup-btn a{
+	float: left;
+	margin: 8px;
+	width: 60px;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	background: #ccc;
+}
+.popup .popup-btn a:active {
+	background: blue;
+}
